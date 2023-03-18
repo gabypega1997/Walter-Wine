@@ -1,6 +1,5 @@
-
 function Index() {
-    return <div>About</div>;
+    return <div>Confirmation</div>;
 }
 
 export default Index;
