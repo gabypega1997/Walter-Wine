@@ -1,6 +1,7 @@
+import Home from "@/common/components/home";
 import Head from "next/head";
 
-const Home = () => {
+const Index = () => {
     return (
         <>
             <Head>
@@ -13,13 +14,12 @@ const Home = () => {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
-                {/* Logo for header  */}
-                {/* <link rel="icon" href="/favicon.ico" /> */}
+                {/* logo png don't work */}
+                <link rel="icon" href="/LogoWeb.png" />
             </Head>
-            <main>
-            </main>
+            <Home />
         </>
     );
-}
+};
 
-export default Home;
+export default Index;
