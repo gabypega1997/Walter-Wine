@@ -16,7 +16,8 @@ export default function Home() {
                 {/* Logo for header  */}
                 {/* <link rel="icon" href="/favicon.ico" /> */}
             </Head>
-            <main></main>
+            <main>
+            </main>
         </>
     );
 }
