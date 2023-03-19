@@ -1,7 +1,6 @@
 {
     "wines": [
         {
-            "id": 1,
             "title": "Cabernet Sauvignon",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h6d/h7c/13570318024734.png",
             "description": "This robust red wine boasts flavors of black cherry and blackberry, with subtle notes of vanilla and oak. Pair with grilled meats or hearty pasta dishes for a satisfying meal.",
@@ -9,7 +8,6 @@
             "rating": 4.6
         },
         {
-            "id": 2,
             "title": "Sauvignon Blanc",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h9f/hc4/14119280994398.png",
             "description": "This fresh and aromatic white wine is bursting with flavors of lemon, grapefruit, and tropical fruit. Enjoy as an aperitif or pair with light seafood dishes.",
@@ -17,7 +15,6 @@
             "rating": 4.2
         },
         {
-            "id": 3,
             "title": "Chardonnay",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/hfe/h6e/12303798173662.png",
             "description": "This full-bodied white wine is rich and buttery, with flavors of vanilla, caramel, and toasted oak. Pair with creamy pasta dishes or roasted chicken.",
@@ -25,7 +22,6 @@
             "rating": 4.4
         },
         {
-            "id": 4,
             "title": "Pinot Noir",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/hf4/h96/12303797318686.png",
             "description": "This delicate red wine has flavors of red cherry, raspberry, and hints of earthiness. Enjoy with grilled salmon or roasted pork tenderloin.",
@@ -33,7 +29,6 @@
             "rating": 4.0
         },
         {
-            "id": 5,
             "title": "Malbec",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h9e/h52/13570321904734.png",
             "description": "This bold and fruity red wine has flavors of blackberry, plum, and a touch of smokiness. Pair with grilled meats or strong cheeses.",
@@ -41,7 +36,6 @@
             "rating": 4.3
         },
         {
-            "id": 6,
             "title": "Merlot",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/hc9/hd2/11888112796702.png",
             "description": "This smooth and easy-drinking red wine has flavors of black cherry, plum, and a hint of chocolate. Pair with burgers or pizza for a casual meal.",
@@ -49,7 +43,6 @@
             "rating": 3.8
         },
         {
-            "id": 7,
             "title": "Riesling",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h1c/h28/12303798400030.png",
             "description": "This sweet and floral white wine has flavors of honey, apricot, and peach. Enjoy with spicy Asian cuisine or as a dessert wine.",
@@ -57,7 +50,6 @@
             "rating": 4.1
         },
         {
-            "id": 8,
             "title": "Zinfandel",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/hdc/h26/11373834287134.png",
             "description": "This bold and spicy red wine has flavors of blackberry, raspberry, and a hint of cinnamon. Pair with barbecue or spicy foods for a delicious meal.",
@@ -65,7 +57,6 @@
             "rating": 4.2
         },
         {
-            "id": 9,
             "title": "Syrah",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h6b/hd8/11888114621534.png",
             "description": "This full-bodied red wine has flavors of blackberry, smoked meat, and black pepper. Pair with roasted meats or hearty stews for a satisfying meal.",
@@ -73,7 +64,6 @@
             "rating": 4.5
         },
         {
-            "id": 10,
             "title": "Chianti",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h57/h6f/10075926184926.png",
             "description": "This classic Italian red wine has flavors of cherry, plum, and a touch of earthiness. Pair with tomato-based pasta dishes or grilled meats.",
@@ -81,7 +71,6 @@
             "rating": 4.0
         },
         {
-            "id": 11,
             "title": "Sangiovese",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h50/h72/8818283541534.png",
             "description": "This Italian red wine has flavors of red cherry, raspberry, and a hint of spice. Pair with roasted vegetables or tomato-based pasta dishes.",
@@ -89,7 +78,6 @@
             "rating": 4.3
         },
         {
-            "id": 12,
             "title": "Grenache",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/hb3/h29/10631291376670.png",
             "description": "This medium-bodied red wine has flavors of red fruit, black pepper, and a hint of smokiness. Pair with grilled meats or roasted vegetables.",
@@ -97,7 +85,6 @@
             "rating": 4.1
         },
         {
-            "id": 13,
             "title": "Viognier",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/hf6/h2f/12303797898270.png",
             "description": "This full-bodied white wine has flavors of peach, apricot, and a touch of honey. Pair with roasted chicken or creamy pasta dishes.",
