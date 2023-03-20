@@ -1,6 +1,12 @@
 
-function Index() {
-    return <div>About</div>;
-}
+const Index = () => {
+
+    return (
+        <>
+            About
+
+        </>
+    );
+};
 
 export default Index;
