@@ -2,7 +2,7 @@ import { Wine } from "@/common/types/wine.types";
 import { useState, useEffect } from "react";
 
 type GetWineResult = {
-    wines?: Wine[];
+    fetchedWines?: Wine[];
     isLoading: boolean;
     error?: string;
 };
@@ -14,8 +14,21 @@ const useGetWine = () => {
         setResult((state) => ({ ...state, isLoading: true }));
         const fetchWines = async () => {
             const res = await fetch("/api/wines");
-            const json = await res.json();
-            setResult((state) => ({ ...state, wines: json, isLoading: false }));
+            const winesRef = await res.json();
+            if (winesRef) {
+                setResult((state) => ({
+                    ...state,
+                    fetchedWines: winesRef,
+                    isLoading: false,
+                }));
+            } else {
+                setResult((state) => ({
+                    ...state,
+                    isLoading: false,
+                    error: "Fetching wines data don't work",
+                }));
+                console.log("Fetching wines data don't work");
+            }
         };
         fetchWines();
     }, []);
