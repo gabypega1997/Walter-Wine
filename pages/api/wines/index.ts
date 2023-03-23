@@ -48,7 +48,7 @@ export default async function winesHandler(
             };
 
             res.status(201).json({
-                message: `Wine ${title} is added with success`,
+                message: `Wine ${newWine} is added with success`,
             });
         } catch (error) {}
     } else {

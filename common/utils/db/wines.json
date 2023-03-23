@@ -1,5 +1,4 @@
-{
-    "wines": [
+[
         {
             "title": "Cabernet Sauvignon",
             "imageUrl": "https://www.totalwine.com/media/sys_master/twmmedia/h6d/h7c/13570318024734.png",
@@ -92,4 +91,3 @@
             "rating": 4.2
         }
     ]
-}
