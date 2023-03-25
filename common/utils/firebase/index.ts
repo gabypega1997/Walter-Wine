@@ -1,6 +1,7 @@
 import { FirebaseError, ServiceAccount } from "firebase-admin";
 import admin from "firebase-admin";
-import serviceAccount from "./serviceAccountKey.json";
+import firebase from 'firebase/app'
+import serviceAccount from "../firebase/serviceAccountKey.json";
 
 if (!admin.apps.length) {
     try {
@@ -14,4 +15,5 @@ if (!admin.apps.length) {
         );
     }
 }
-export default admin.firestore();
+export const auth = admin.auth();
+export const db = admin.firestore();
