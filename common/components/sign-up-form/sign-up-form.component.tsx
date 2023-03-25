@@ -1,4 +1,3 @@
-import handleFormChanges from "@/common/hooks/form-handler";
 import { SignupFormData } from "@/common/types/user.types";
 import { useState, FormEvent } from "react";
 
@@ -28,7 +27,7 @@ const SignUpForm = () => {
             alert("Passwords do not match");
             return;
         }
-        const response = await fetch("/api/auth", {
+        const response = await fetch("/api/auth/sign-up", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
