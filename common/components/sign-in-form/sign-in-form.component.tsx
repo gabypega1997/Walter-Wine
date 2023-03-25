@@ -15,13 +15,27 @@ const SignInForm = () => {
             ...prevState,
             [id]: value,
         }));
-        console.log(formData)
+        console.log(formData);
     };
 
-    const handleSubmit = async (e:FormEvent<HTMLFormElement>) =>{
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
-    }
+        const response = await fetch("/api/auth/sign-in", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+        if (response.ok) {
+            // Handle success
+            setFormData(InitialSignInData);
+            console.log("Sign in successful!");
+        } else {
+            // Handle error
+            console.error("Sign in failed");
+        }
+    };
 
     return (
         <form onSubmit={handleSubmit}>
