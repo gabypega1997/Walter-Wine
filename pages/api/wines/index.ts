@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import db from "@/common/utils/db";
+import { db } from "@/common/utils/firebase";
 import { Wine } from "@/common/types/wine.types";
 
 export default async function winesHandler(
