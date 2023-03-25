@@ -13,9 +13,10 @@ export default async function SignUp(
             .then(async (userRecord) => {
                 await db
                     .collection("users")
-                    .add({ email, displayName, id: userRecord.uid })
+                    .doc(userRecord.uid)
+                    .set({ email, displayName })
                     .then((user) => {
-                        console.log("Successffuly add user to db", user.id);
+                        console.log("Successffuly add user to db", user);
                     })
                     .catch((error) => {
                         console.log(
@@ -24,11 +25,11 @@ export default async function SignUp(
                         );
                     });
                 console.log("Successfully created new user:", userRecord.uid);
-                res.status(201).json({message:"User Added"});
+                res.status(201).json({ user: userRecord.uid });
             })
             .catch((error) => {
                 console.log("Error creating new user:", error);
-                res.status(500);
+                res.status(500).json({ message: "User Not Added" });
             });
     }
 }

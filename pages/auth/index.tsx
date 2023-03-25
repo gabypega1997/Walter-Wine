@@ -4,12 +4,15 @@ type SignupFormData = {
     email: string;
     password: string;
 };
+
+const InitilaSingnUpData: SignupFormData = {
+    displayName: "",
+    email: "",
+    password: "",
+};
 const Index = () => {
-    const [formData, setFormData] = useState<SignupFormData>({
-        displayName: "",
-        email: "",
-        password: "",
-    });
+    const [formData, setFormData] =
+        useState<SignupFormData>(InitilaSingnUpData);
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;
         setFormData((prevState) => ({
@@ -33,6 +36,7 @@ const Index = () => {
         });
         if (response.ok) {
             // Handle success
+            setFormData(InitilaSingnUpData);
             console.log("Sign up successful!");
         } else {
             // Handle error
@@ -69,7 +73,7 @@ const Index = () => {
                 required
             />
             <br />
-            <button type="submit" >Sign Up</button>
+            <button type="submit">Sign Up</button>
         </form>
     );
 };
