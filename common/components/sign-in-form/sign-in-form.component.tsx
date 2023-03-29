@@ -1,5 +1,7 @@
 import { SignInData } from "@/common/types/user.types";
 import { FormEvent, useState } from "react";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
 
 const InitialSignInData: SignInData = {
     email: "",
@@ -18,6 +20,9 @@ const SignInForm = () => {
         console.log(formData);
     };
 
+    const signInWithGoogleButton = async () => {
+        await signInWithGoogle();
+    };
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const response = await fetch("/api/auth/sign-in", {
@@ -58,6 +63,14 @@ const SignInForm = () => {
             />
             <br />
             <button type="submit">Sign In</button>
+            <br></br>
+            <button
+                className="bg-blue-500"
+                type="button"
+                onClick={signInWithGoogleButton}
+            >
+                Sign In With google
+            </button>
         </form>
     );
 };

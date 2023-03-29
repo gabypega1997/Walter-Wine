@@ -1,8 +1,6 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import "firebase/auth";
-import { auth, db, firebaseAdmin } from "@/common/utils/firebase";
-import firebase from "@/common/utils/firebase/firebase.admin";
-// import {firebaseAdmin} from "@/common/utils/firebase/firebase.admin";
+import { auth,  firebaseAdmin } from "@/common/utils/firebase";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
