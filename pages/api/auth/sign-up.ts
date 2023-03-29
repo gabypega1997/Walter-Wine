@@ -1,4 +1,6 @@
 import { auth, db } from "@/common/utils/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function SignUp(
@@ -8,13 +10,13 @@ export default async function SignUp(
     if (req.method === "POST") {
         const { displayName, email, password } = req.body;
 
-        await auth
-            .createUser({ email, displayName, password })
+        await createUserWithEmailAndPassword(auth, email, password)
             .then(async (userRecord) => {
-                await db
-                    .collection("users")
-                    .doc(userRecord.uid)
-                    .set({ email, displayName })
+                await setDoc(doc(db, "users", userRecord.user.uid), {
+                    email,
+                    displayName,
+                    createDate: new Date().toISOString(),
+                })
                     .then((user) => {
                         console.log("Successffuly add user to db", user);
                     })
@@ -24,8 +26,11 @@ export default async function SignUp(
                             error
                         );
                     });
-                console.log("Successfully created new user:", userRecord.uid);
-                res.status(201).json({ user: userRecord.uid });
+                console.log(
+                    "Successfully created new user:",
+                    userRecord.user.uid
+                );
+                res.status(201).json({ user: userRecord.user.uid });
             })
             .catch((error) => {
                 console.log("Error creating new user:", error);

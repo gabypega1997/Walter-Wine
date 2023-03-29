@@ -15,13 +15,12 @@ export default async function SignIn(
             const authService = auth;
             // authenticate the user using Firebase Authentication
             const {email, password} = req.body;
+            console.log(email, password)
             const userCredential = await signInWithEmailAndPassword(
                 authService,
                 email,
                 password
             );
-            res.status(200).json({ userCredential });
-
             // generate a Firebase ID token and return it in the response
             const token = await firebaseAdmin
                 .auth()
