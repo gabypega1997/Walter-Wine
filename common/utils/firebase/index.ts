@@ -1,6 +1,9 @@
 import admin from "./firebase.admin";
-import "firebase/auth";
+import { app } from "./firebase.sdk";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
-export const auth = admin.auth();
-export const db = admin.firestore();
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 export const firebaseAdmin = admin;

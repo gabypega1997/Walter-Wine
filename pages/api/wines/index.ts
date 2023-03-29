@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { db } from "@/common/utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 import { Wine } from "@/common/types/wine.types";
 
 export default async function winesHandler(
@@ -9,10 +10,11 @@ export default async function winesHandler(
 ) {
     if (req.method === "GET") {
         try {
-            const winesRef = await db.collection("wines").get();
+            const winesRef = await collection(db, "wines");
+            const winesSnap = await getDocs(winesRef);
             const wines: Wine[] = [];
 
-            winesRef.forEach((wine) => {
+            winesSnap.forEach((wine) => {
                 wines.push({
                     id: wine.id,
                     title: wine.data().title,
@@ -27,30 +29,6 @@ export default async function winesHandler(
             console.error(error);
             res.status(500).json({ message: "Server error" });
         }
-    } else if (req.method === "POST") {
-        try {
-            const { title, imageUrl, description, price, rating } = req.body;
-
-            const newWinesRef = await db.collection("wines").add({
-                title,
-                imageUrl,
-                description,
-                price,
-                rating,
-            });
-            const newWine = {
-                id: newWinesRef.id,
-                title,
-                imageUrl,
-                description,
-                price,
-                rating,
-            };
-
-            res.status(201).json({
-                message: `Wine ${newWine} is added with success`,
-            });
-        } catch (error) {}
     } else {
         res.status(404).json({ message: "Not found" });
     }

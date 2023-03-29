@@ -1,9 +1,11 @@
 import useGetWine from "@/common/hooks/api/get-wine.hooks";
-import { FC } from "react";
+import { db, getCities } from "@/common/utils/firebase";
+import { FC, useEffect } from "react";
 
 const Index: FC = () => {
 
     const [{ isLoading, fetchedWines, error }] = useGetWine();
+
 
     console.log(fetchedWines);
     return (
