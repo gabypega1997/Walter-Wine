@@ -28,7 +28,6 @@ export default async function SignUp(
                     });
                 console.log(
                     "Successfully created new user:",
-                    userRecord.user.uid
                 );
                 res.status(201).json({ user: userRecord.user.uid });
             })
