@@ -1,6 +1,8 @@
+import { useDispatch } from "react-redux";
+import { setUser } from "@/common/store/user/user.store";
+
 import { SignupFormData } from "@/common/types/user.types";
 import { useState, FormEvent } from "react";
-
 const InitilaSingnUpData: SignupFormData = {
     displayName: "",
     email: "",
@@ -10,6 +12,7 @@ const InitilaSingnUpData: SignupFormData = {
 const SignUpForm = () => {
     const [formData, setFormData] =
         useState<SignupFormData>(InitilaSingnUpData);
+    const dispatch = useDispatch();
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;

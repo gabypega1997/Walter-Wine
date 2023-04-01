@@ -1,7 +1,7 @@
 import SignInForm from "@/common/components/sign-in-form";
 import SignUpForm from "@/common/components/sign-up-form";
 import { auth } from "@/common/utils/firebase";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Index = () => {
     const currUser = auth.currentUser;
