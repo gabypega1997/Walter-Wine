@@ -1,19 +1,20 @@
 import SignInForm from "@/common/components/sign-in-form";
 import SignUpForm from "@/common/components/sign-up-form";
+import { useSelector } from "react-redux";
 import { auth } from "@/common/utils/firebase";
 import { useEffect, useState } from "react";
 
-const Index = () => {
-    const currUser = auth.currentUser;
-    const [user, setUser] = useState(currUser);
-    useEffect(() => {
-        setUser(auth.currentUser);
-    }, [auth.currentUser]);
-    console.log(user);
+import { useDispatch } from "react-redux";
+import { setUser } from "@/common/store/user/user.store";
 
+const Index = () => {
+    const user = useSelector((state: any) => state.user.user);
+
+    const dispatch = useDispatch();
     const signOutHandler = async () => {
         const response = await fetch("/api/auth/sign-out");
         if (response.ok) {
+            dispatch(setUser(null));
             console.log("Sign Out Successfuly");
         } else {
             console.log("Sign Out Failed");
@@ -21,7 +22,7 @@ const Index = () => {
     };
     return (
         <div className="flex">
-            <h1>{user && user.displayName}</h1>
+            <h1>{user && user.uid}</h1>
             <SignUpForm />
             <SignInForm />
             <button onClick={signOutHandler}>SignOut</button>

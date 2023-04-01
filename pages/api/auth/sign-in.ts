@@ -4,20 +4,18 @@ import { auth } from "@/common/utils/firebase";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function SignIn(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
+const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "POST") {
         const { email, password } = req.body;
         await signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                res.status(201).json(user);
+                res.status(201).json({message: "Success!", user});
             })
             .catch((error) => {
                 console.error("Authentication failed", error.message);
                 res.status(400).json(error.message);
             });
     }
-}
+};
+export default SignIn;

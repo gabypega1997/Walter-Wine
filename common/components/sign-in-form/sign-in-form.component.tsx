@@ -1,7 +1,9 @@
 import { SignInData } from "@/common/types/user.types";
 import { FormEvent, useState } from "react";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
+
+import { useDispatch } from "react-redux";
+import { setUser } from "@/common/store/user/user.store";
 
 const InitialSignInData: SignInData = {
     email: "",
@@ -10,6 +12,7 @@ const InitialSignInData: SignInData = {
 
 const SignInForm = () => {
     const [formData, setFormData] = useState(InitialSignInData);
+    const dispatch = useDispatch();
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;
@@ -34,6 +37,9 @@ const SignInForm = () => {
         });
         if (response.ok) {
             // Handle success
+            const { user } = await response.json();
+            dispatch(setUser(user));
+            console.log(user);
             setFormData(InitialSignInData);
             console.log("Sign in successful!");
         } else {
