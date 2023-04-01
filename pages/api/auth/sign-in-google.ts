@@ -1,11 +1,12 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "./index";
+import { auth, db } from "@/common/utils/firebase";
 
+import type { NextApiRequest, NextApiResponse } from "next";
 
-const provider = new GoogleAuthProvider();
+const SignInWithGoogleApi = async (req: NextApiRequest, res: NextApiResponse) => {
+    const provider = new GoogleAuthProvider();
 
-export const signInWithGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -25,7 +26,10 @@ export const signInWithGoogle = async () => {
         }
 
         console.log("Successfully sign in with google ");
+        res.status(201).json({ user, message: "success" });
     } catch (error) {
         console.error("Error sign in with google:", error);
+        res.status(400).json({ message: "Error sign in with google" });
     }
 };
+export default SignInWithGoogleApi;

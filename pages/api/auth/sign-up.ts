@@ -3,12 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { useDispatch } from "react-redux";
-import { setUser } from "@/common/store/user/user.store";
-
-const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
-    const dispatch = useDispatch();
-
+const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "POST") {
         const { displayName, email, password } = req.body;
 
@@ -28,7 +23,6 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
                             error
                         );
                     });
-                dispatch(setUser(userRecord.user));
                 console.log("Successfully created new user");
                 res.status(201).json({ user: userRecord.user });
             })
@@ -38,4 +32,4 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
             });
     }
 };
-export default SignUp;
+export default SignUpApi;

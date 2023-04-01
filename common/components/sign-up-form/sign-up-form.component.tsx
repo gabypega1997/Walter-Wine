@@ -3,6 +3,7 @@ import { setUser } from "@/common/store/user/user.store";
 
 import { SignupFormData } from "@/common/types/user.types";
 import { useState, FormEvent } from "react";
+
 const InitilaSingnUpData: SignupFormData = {
     displayName: "",
     email: "",
@@ -39,6 +40,8 @@ const SignUpForm = () => {
         });
         if (response.ok) {
             // Handle success
+            const { user } = await response.json();
+            dispatch(setUser(user));
             setFormData(InitilaSingnUpData);
             console.log("Sign up successful!");
         } else {
