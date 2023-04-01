@@ -4,6 +4,7 @@ import { signInWithGoogle } from "@/common/utils/firebase/authentication.functio
 
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
+import SignInGoogle from "../sign-in-google";
 
 const InitialSignInData: SignInData = {
     email: "",
@@ -77,6 +78,7 @@ const SignInForm = () => {
             >
                 Sign In With google
             </button>
+            <SignInGoogle/>
         </form>
     );
 };
