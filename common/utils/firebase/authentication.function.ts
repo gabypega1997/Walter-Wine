@@ -2,7 +2,6 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "./index";
 
-
 const provider = new GoogleAuthProvider();
 
 export const signInWithGoogle = async () => {
@@ -10,8 +9,7 @@ export const signInWithGoogle = async () => {
         const result = await signInWithPopup(auth, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        console.log(token);
-        const user = result.user;
+        const user =  result.user;
 
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
@@ -23,9 +21,10 @@ export const signInWithGoogle = async () => {
             });
             console.log("Successfully user add to Db");
         }
-
         console.log("Successfully sign in with google ");
+        return JSON.stringify(user);
     } catch (error) {
         console.error("Error sign in with google:", error);
+        return null;
     }
 };

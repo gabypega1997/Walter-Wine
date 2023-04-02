@@ -1,24 +1,13 @@
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
+import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
 
 const SignInGoogle = () => {
     const dispatch = useDispatch();
     const handlerSignInGoogle = async () => {
-        const response = await fetch("/api/auth/sign-in-google");
-        if (response.ok) {
-            const { user } = await response.json();
-
-
-            console.log(user);
-            // dispatch(setUser(user));
-
-
-
-            
-            console.log("Sign In Witn Google Successfuly");
-        } else {
-            console.log("Sign In With Google Failed");
-        }
+        const userString = await signInWithGoogle();
+        const user = JSON.parse(userString!);
+        dispatch(setUser(user));
     };
     return (
         <button
