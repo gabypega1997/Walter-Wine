@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { useState, FormEvent } from "react";
+
 import { setUser } from "@/common/store/user/user.store";
 
 import { SignupFormData } from "@/common/types/user.types";
-import { useState, FormEvent } from "react";
 
 const InitilaSingnUpData: SignupFormData = {
     displayName: "",
@@ -14,6 +16,7 @@ const SignUpForm = () => {
     const [formData, setFormData] =
         useState<SignupFormData>(InitilaSingnUpData);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;
@@ -44,6 +47,7 @@ const SignUpForm = () => {
             dispatch(setUser(user));
             setFormData(InitilaSingnUpData);
             console.log("Sign up successful!");
+            router.push("/shop");
         } else {
             // Handle error
             console.error("Sign up failed");

@@ -2,10 +2,20 @@ import Image from "next/image";
 import NavbarButton from "./navbar-button.component";
 import SearchForm from "./search-form.component";
 
+import { useSelector } from "react-redux";
+import { selectUser } from "@/common/store/user/user.selector";
+import SignOut from "../sign-out";
+
 const Navbar = () => {
+    const user = useSelector(selectUser);
     return (
-        <div className="h-16 bg-green-800 flex justify-between">
-            <Image src="/LogoWeb.png" width={40} height={50} alt="Logo WalterWine" />
+        <div className="flex justify-between h-16 bg-green-800">
+            <Image
+                src="/LogoWeb.png"
+                width={40}
+                height={50}
+                alt="Logo WalterWine"
+            />
             <SearchForm />
 
             <NavbarButton link="/">Home</NavbarButton>
@@ -16,7 +26,15 @@ const Navbar = () => {
             <NavbarButton link="/shop" style="shop">
                 Shop
             </NavbarButton>
-            <NavbarButton link="/auth">Authentication</NavbarButton>
+
+            {user ? (
+                <>
+                    <NavbarButton link="/account">My Account</NavbarButton>
+                    <SignOut />
+                </>
+            ) : (
+                <NavbarButton link="/auth">Authentication</NavbarButton>
+            )}
         </div>
     );
 };

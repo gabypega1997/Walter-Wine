@@ -1,13 +1,18 @@
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+
 import { setUser } from "@/common/store/user/user.store";
 import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
 
 const SignInGoogle = () => {
     const dispatch = useDispatch();
+    const router = useRouter();
+
     const handlerSignInGoogle = async () => {
         const userString = await signInWithGoogle();
         const user = JSON.parse(userString!);
         dispatch(setUser(user));
+        router.push("/shop");
     };
     return (
         <button

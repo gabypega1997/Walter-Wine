@@ -1,6 +1,6 @@
 import { SignInData } from "@/common/types/user.types";
 import { FormEvent, useState } from "react";
-
+import { useRouter } from "next/router";
 
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
@@ -14,6 +14,7 @@ const InitialSignInData: SignInData = {
 const SignInForm = () => {
     const [formData, setFormData] = useState(InitialSignInData);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;
@@ -40,6 +41,7 @@ const SignInForm = () => {
             console.log(user);
             setFormData(InitialSignInData);
             console.log("Sign in successful!");
+            router.push("/shop");
         } else {
             // Handle error
             console.error("Sign in failed");
@@ -68,7 +70,7 @@ const SignInForm = () => {
             <br />
             <button type="submit">Sign In</button>
             <br></br>
-            <SignInGoogle/>
+            <SignInGoogle />
         </form>
     );
 };
