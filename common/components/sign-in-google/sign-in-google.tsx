@@ -7,14 +7,25 @@ const SignInGoogle = () => {
         const response = await fetch("/api/auth/sign-in-google");
         if (response.ok) {
             const { user } = await response.json();
-            dispatch(setUser(user));
+
+
+            console.log(user);
+            // dispatch(setUser(user));
+
+
+
+            
             console.log("Sign In Witn Google Successfuly");
         } else {
             console.log("Sign In With Google Failed");
         }
     };
     return (
-        <button className="bg-blue-600" type="button" onClick={handlerSignInGoogle}>
+        <button
+            className="bg-blue-600"
+            type="button"
+            onClick={handlerSignInGoogle}
+        >
             Sign In With Google
         </button>
     );
