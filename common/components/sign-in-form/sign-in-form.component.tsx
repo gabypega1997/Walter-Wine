@@ -22,7 +22,6 @@ const SignInForm = () => {
             ...prevState,
             [id]: value,
         }));
-        console.log(formData);
     };
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
