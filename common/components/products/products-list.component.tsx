@@ -4,11 +4,18 @@ import ProductCart from "./product-card.component";
 const ProductsList = () => {
     const [{ isLoading, fetchedWines, error }] = useGetWine();
 
-
-
-    return <>
-        {fetchedWines!.map((wine)=><ProductCart key={Number(wine.id!)} item={wine}/>)}
-    </>;
+    return (
+        <>
+            {isLoading ? (
+                <>Loading...</>
+            ) : (
+                fetchedWines &&
+                fetchedWines.map((wine) => (
+                    <ProductCart key={wine.id!} item={wine} />
+                ))
+            )}
+        </>
+    );
 };
 
 export default ProductsList;
