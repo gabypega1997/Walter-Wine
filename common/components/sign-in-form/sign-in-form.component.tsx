@@ -52,7 +52,7 @@ const SignInForm = () => {
             <label htmlFor="email">Email:</label>
             <input
                 type="email"
-                id="email"
+                id="email-sign-in"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -60,8 +60,9 @@ const SignInForm = () => {
             <br />
             <label htmlFor="password">Password:</label>
             <input
+            autoComplete="currentPassword"
                 type="password"
-                id="password"
+                id="password-sign-in"
                 value={formData.password}
                 onChange={handleChange}
                 required

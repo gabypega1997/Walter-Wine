@@ -76,6 +76,7 @@ const SignUpForm = () => {
             <br />
             <label htmlFor="password">Password:</label>
             <input
+                autoComplete="newPassword"
                 type="password"
                 id="password"
                 value={formData.password}
@@ -85,6 +86,7 @@ const SignUpForm = () => {
             <br />
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
+                autoComplete="newPassword"
                 type="password"
                 id="confirmPassword"
                 value={formData.confirmPassword}
