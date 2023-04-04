@@ -9,7 +9,7 @@ type ProductCardProps = {
 
 const ProductCart: FC<ProductCardProps> = ({ item }) => {
     return (
-        <div className="flex m-2 bg-gray-600">
+        <div className="flex h-56 max-w-sm m-2 bg-gray-600">
             <div className="flex justify-center w-2/5">
                 <div className="flex flex-col justify-end h-full bg-yellow-200 w-28">
                     <div className="flex items-end justify-center h-12 gap-3 bg-yellow-400">

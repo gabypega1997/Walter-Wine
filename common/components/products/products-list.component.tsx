@@ -5,7 +5,7 @@ const ProductsList = () => {
     const [{ isLoading, fetchedWines, error }] = useGetWine();
 
     return (
-        <>
+        <div className="flex flex-wrap">
             {isLoading ? (
                 <>Loading...</>
             ) : (
@@ -14,7 +14,7 @@ const ProductsList = () => {
                     <ProductCart key={wine.id!} item={wine} />
                 ))
             )}
-        </>
+        </div>
     );
 };
 
