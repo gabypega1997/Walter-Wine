@@ -28,8 +28,8 @@ const ProductButton: FC<ProductButton> = ({ children }) => {
 const ProductCart: FC<ProductCardProps> = ({ item }) => {
     const dispatch = useDispatch();
 
-    const handleAddProductToCart = async() => {
-        await dispatch(addItemToCart(item));
+    const handleAddProductToCart = () => {
+        dispatch(addItemToCart(item));
     };
     return (
         <div className="flex h-56 max-w-sm m-2 bg-gray-600">

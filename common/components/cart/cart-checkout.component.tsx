@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 
-import { selectCartItems } from "@/common/store/cart/cart.selector";
+import { selectCartItems, selectCartTotal } from "@/common/store/cart/cart.selector";
 import { CartItem, Wine } from "@/common/types/wine.types";
 import Image from "next/image";
 
 const CartCheckout = () => {
     const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
 
     return (
         <div>
@@ -43,6 +44,7 @@ const CartCheckout = () => {
                             </div>
                         </div>
                     ))}
+                    <p>Total: {cartTotal}$</p>
             </div>
         </div>
     );
