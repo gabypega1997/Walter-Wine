@@ -1,27 +1,57 @@
-import { FC } from "react";
-import { ReactNode } from "react";
+import { FC, ReactNode, use } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Wine } from "@/common/types/wine.types";
 import Image from "next/image";
+import { addItemToCart } from "@/common/store/cart/cart.reducer";
+import {
+    selectCartCount,
+    selectCartItems,
+} from "@/common/store/cart/cart.selector";
 
 type ProductCardProps = {
     item: Wine;
 };
 
+type ProductButton = {
+    children: ReactNode;
+};
+
+const ProductButton: FC<ProductButton> = ({ children }) => {
+    return (
+        <button className="z-20 text-white rounded-sm h-9 w-9 bg-slate-500">
+            {children}
+        </button>
+    );
+};
+
 const ProductCart: FC<ProductCardProps> = ({ item }) => {
+    const dispatch = useDispatch();
+
+    const handleAddProductToCart = async() => {
+        await dispatch(addItemToCart(item));
+    };
     return (
         <div className="flex h-56 max-w-sm m-2 bg-gray-600">
             <div className="flex justify-center w-2/5">
                 <div className="flex flex-col justify-end h-full bg-yellow-200 w-28">
                     <div className="flex items-end justify-center h-12 gap-3 bg-yellow-400">
-                        <div className="z-20 rounded-sm h-9 w-9 bg-slate-500"></div>
-                        <div className="z-20 rounded-sm h-9 w-9 bg-slate-500"></div>
-                            <Image
+                        <button className="z-20 text-white rounded-sm h-9 w-9 bg-slate-500">
+                            Share
+                        </button>
+                        <button
+                            onClick={handleAddProductToCart}
+                            className="z-20 text-white rounded-sm h-9 w-9 bg-slate-500"
+                        >
+                            Buy
+                        </button>
+                        <Image
                             className="absolute"
-                                src="/wine1.png"
-                                width={80}
-                                height={150}
-                                alt={item.title}
-                            />
+                            src="/wine1.png"
+                            width={80}
+                            height={150}
+                            alt={item.title}
+                        />
                     </div>
                 </div>
             </div>
