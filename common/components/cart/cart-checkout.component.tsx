@@ -1,18 +1,29 @@
 import { useSelector } from "react-redux";
 
-import { selectCartItems, selectCartTotal } from "@/common/store/cart/cart.selector";
+import {
+    selectCartItems,
+    selectCartTotal,
+} from "@/common/store/cart/cart.selector";
 import { CartItem, Wine } from "@/common/types/wine.types";
 import Image from "next/image";
+import { selectUser } from "@/common/store/user/user.selector";
+
+const Payment = () => {
+    return <div>Stripe</div>;
+};
 
 const CartCheckout = () => {
     const cartItems = useSelector(selectCartItems);
     const cartTotal = useSelector(selectCartTotal);
+    const currentUser = useSelector(selectUser);
 
     return (
         <div>
             {/* Images component */}
 
-                <h1 className="p-3 text-2xl font-bold text-center text-white bg-slate-400">Checkout</h1>
+            <h1 className="p-3 text-2xl font-bold text-center text-white bg-slate-400">
+                Checkout
+            </h1>
             <div className="rounded-br-[250px] h-96 bg-slate-400 flex max-w-full overflow-scroll">
                 {cartItems &&
                     cartItems.map((item: Wine) => (
@@ -44,8 +55,15 @@ const CartCheckout = () => {
                             </div>
                         </div>
                     ))}
-                    <p>Total: {cartTotal}$</p>
+                <p>Total: {cartTotal}$</p>
             </div>
+
+            {/* LogIn Component */}
+            {currentUser ? (
+                <Payment></Payment>
+            ) : (
+                <div>Please LogIn to continue with your order</div>
+            )}
         </div>
     );
 };
