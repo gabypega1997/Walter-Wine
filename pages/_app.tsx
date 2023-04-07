@@ -1,18 +1,23 @@
-import "@/styles/globals.css";
-
-import { store, persistor } from "@/common/store";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-
 import type { AppProps } from "next/app";
+import { PersistGate } from "redux-persist/integration/react";
+import { Elements } from "@stripe/react-stripe-js";
+
+import { stripePromise } from "@/common/utils/stripe";
+import { store, persistor } from "@/common/store";
+
 import Layout from "@/common/components/layout";
+
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
                 <Layout>
-                    <Component {...pageProps} />
+                    <Elements stripe={stripePromise}>
+                        <Component {...pageProps} />
+                    </Elements>
                 </Layout>
             </PersistGate>
         </Provider>

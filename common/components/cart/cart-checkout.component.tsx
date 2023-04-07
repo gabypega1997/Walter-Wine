@@ -7,10 +7,7 @@ import {
 import { CartItem, Wine } from "@/common/types/wine.types";
 import Image from "next/image";
 import { selectUser } from "@/common/store/user/user.selector";
-
-const Payment = () => {
-    return <div>Stripe</div>;
-};
+import Payment from "../payment-form";
 
 const CartCheckout = () => {
     const cartItems = useSelector(selectCartItems);
@@ -60,7 +57,7 @@ const CartCheckout = () => {
 
             {/* LogIn Component */}
             {currentUser ? (
-                <Payment></Payment>
+                <Payment />
             ) : (
                 <div>Please LogIn to continue with your order</div>
             )}
