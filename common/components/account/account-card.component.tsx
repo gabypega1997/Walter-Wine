@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const AccountCard = () => {
     const user = useSelector(selectUser);
-    console.log(user);
     return (
         <>
             {user && user.uid}
