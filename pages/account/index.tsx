@@ -1,6 +1,7 @@
+import Account from "@/common/components/account";
 
 function Index() {
-    return <div>Account</div>;
+    return <Account />;
 }
 
 export default Index;

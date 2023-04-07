@@ -6,3 +6,7 @@ export type Wine = {
     price: number;
     rating: number;
 };
+
+export type CartItem = {
+    quantity?: number;
+} & Wine;

@@ -1,6 +1,6 @@
 import { SignInData } from "@/common/types/user.types";
 import { FormEvent, useState } from "react";
-import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
+import { useRouter } from "next/router";
 
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
@@ -14,6 +14,7 @@ const InitialSignInData: SignInData = {
 const SignInForm = () => {
     const [formData, setFormData] = useState(InitialSignInData);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;
@@ -21,12 +22,8 @@ const SignInForm = () => {
             ...prevState,
             [id]: value,
         }));
-        console.log(formData);
     };
 
-    const signInWithGoogleButton = async () => {
-        await signInWithGoogle();
-    };
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const response = await fetch("/api/auth/sign-in", {
@@ -43,6 +40,7 @@ const SignInForm = () => {
             console.log(user);
             setFormData(InitialSignInData);
             console.log("Sign in successful!");
+            router.push("/shop");
         } else {
             // Handle error
             console.error("Sign in failed");
@@ -62,6 +60,7 @@ const SignInForm = () => {
             <br />
             <label htmlFor="password">Password:</label>
             <input
+            autoComplete="currentPassword"
                 type="password"
                 id="password"
                 value={formData.password}
@@ -71,14 +70,7 @@ const SignInForm = () => {
             <br />
             <button type="submit">Sign In</button>
             <br></br>
-            <button
-                className="bg-blue-500"
-                type="button"
-                onClick={signInWithGoogleButton}
-            >
-                Sign In With google
-            </button>
-            <SignInGoogle/>
+            <SignInGoogle />
         </form>
     );
 };

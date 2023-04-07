@@ -1,20 +1,25 @@
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+
 import { setUser } from "@/common/store/user/user.store";
+import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
 
 const SignInGoogle = () => {
     const dispatch = useDispatch();
+    const router = useRouter();
+
     const handlerSignInGoogle = async () => {
-        const response = await fetch("/api/auth/sign-in-google");
-        if (response.ok) {
-            const { user } = await response.json();
-            dispatch(setUser(user));
-            console.log("Sign In Witn Google Successfuly");
-        } else {
-            console.log("Sign In With Google Failed");
-        }
+        const userString = await signInWithGoogle();
+        const user = JSON.parse(userString!);
+        dispatch(setUser(user));
+        router.push("/shop");
     };
     return (
-        <button className="bg-blue-600" type="button" onClick={handlerSignInGoogle}>
+        <button
+            className="bg-blue-600"
+            type="button"
+            onClick={handlerSignInGoogle}
+        >
             Sign In With Google
         </button>
     );
