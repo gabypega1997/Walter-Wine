@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+require("dotenv").config();
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(`${process.env.STRIPE_SECRET_KEY}`);
 
 type Data = {
     amount: number;
@@ -18,7 +19,6 @@ export default async function handler(
                 currency: "eur",
                 payment_method_types: ["card"],
             });
-            console.log(paymentIntent);
 
             // return {
             //     statusCode: 200,

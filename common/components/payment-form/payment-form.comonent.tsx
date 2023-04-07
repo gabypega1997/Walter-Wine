@@ -28,13 +28,9 @@ const PaymentForm = () => {
             body: JSON.stringify({ amount: amount * 100 }),
         }).then((res) => res.json());
 
-        setClientSecret(response.clientSecret);
+    const  {clientSecret}  = response;
+        console.log(clientSecret);
 
-        console.log(response);
-
-        const { client_secret } = await response;
-        console.log(clientSecret)
-        // console.log(client_secret);
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)!,
@@ -43,6 +39,7 @@ const PaymentForm = () => {
                 },
             },
         });
+        console.log(paymentResult.error)
         setIsProcessingPayment(false);
         if (paymentResult.error) {
             alert(paymentResult.error);
