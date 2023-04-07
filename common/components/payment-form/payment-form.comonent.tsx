@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import { selectCartTotal } from "../../store/cart/cart.selector";
 import { selectUser } from "../../store/user/user.selector";
+import Spinner from "../spinner";
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -12,8 +13,6 @@ const PaymentForm = () => {
     const amount = useSelector(selectCartTotal);
     const currentUser = useSelector(selectUser);
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-    const [clientSecret, setClientSecret] = useState("");
-
     const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!stripe || !elements) {
@@ -28,8 +27,7 @@ const PaymentForm = () => {
             body: JSON.stringify({ amount: amount * 100 }),
         }).then((res) => res.json());
 
-    const  {clientSecret}  = response;
-        console.log(clientSecret);
+        const { clientSecret } = response;
 
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -39,7 +37,6 @@ const PaymentForm = () => {
                 },
             },
         });
-        console.log(paymentResult.error)
         setIsProcessingPayment(false);
         if (paymentResult.error) {
             alert(paymentResult.error);
@@ -55,7 +52,7 @@ const PaymentForm = () => {
             <form onSubmit={paymentHandler}>
                 <h2>Credit Card Payment: </h2>
                 <CardElement />
-                <button>Pay now</button>
+                {isProcessingPayment ? <Spinner /> : <button>Pay now</button>}
             </form>
         </div>
     );
