@@ -1,7 +1,7 @@
 import { storage } from "./index";
 import { ref, uploadBytes } from "firebase/storage";
 
-export async function uploadProfilImage(file: File, ): Promise<void> {
+export async function uploadProfilImage(file: File): Promise<void> {
     const storageRef = ref(storage, `images/${file.name}`);
     try {
         await uploadBytes(storageRef, file);

@@ -7,29 +7,28 @@ const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "POST") {
         const { displayName, email, password } = req.body;
 
-        await createUserWithEmailAndPassword(auth, email, password)
-            .then(async (userRecord) => {
-                await setDoc(doc(db, "users", userRecord.user.uid), {
-                    email,
-                    displayName,
-                    createDate: new Date().toISOString(),
-                })
-                    .then((user) => {
-                        console.log("Successffuly add user to db", user);
-                    })
-                    .catch((error) => {
-                        console.log(
-                            "Error adding new user to database:",
-                            error
-                        );
-                    });
-                console.log("Successfully created new user");
-                res.status(201).json({ user: userRecord.user });
-            })
-            .catch((error) => {
-                console.log("Error creating new user:", error);
-                res.status(500).json({ message: "User Not Added" });
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            await setDoc(doc(db, "users", userCredential.user.uid), {
+                email,
+                displayName,
+                createDate: new Date().toISOString(),
             });
+
+            console.log("Successfully created new user");
+            res.status(201).json({ user: userCredential.user });
+        } catch (error) {
+            console.log("Error creating new user:", error);
+            res.status(500).json({ message: "User Not Added" });
+        }
+    } else {
+        res.status(405).json({ error: "Method not allowed" });
     }
 };
+
 export default SignUpApi;
