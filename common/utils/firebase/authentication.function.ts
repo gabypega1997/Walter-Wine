@@ -1,4 +1,5 @@
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { UserType } from "@/common/types/user.types";
+import { signInWithPopup, GoogleAuthProvider, User } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "./index";
 
@@ -9,7 +10,7 @@ export const signInWithGoogle = async () => {
         const result = await signInWithPopup(auth, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        const user =  result.user;
+        const user = result.user;
 
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
@@ -18,15 +19,31 @@ export const signInWithGoogle = async () => {
                 email: user.email,
                 displayName: user.displayName,
                 createDate: new Date().toISOString(),
+                photoURL: "defaultProfil.jpg",
+                orders: [],
             });
             console.log("Successfully user add to Db");
+            const createdUser = await (
+                await getDoc(doc(db, "users", user.uid))
+            ).data() as UserType;
+            return createdUser;
+
         }
+
         console.log("Successfully sign in with google ");
-        return JSON.stringify(user);
+        return userSnap.data() as UserType;
     } catch (error) {
         console.error("Error sign in with google:", error);
         return null;
     }
 };
 
+export const takeUserDocumentFromAuth = async (uid: string) => {
+    const userDocRef = await doc(db, "users", uid);
 
+    const userSnapshot = await getDoc(userDocRef);
+
+    const userData = userSnapshot.data();
+
+    return userData;
+};

@@ -9,8 +9,8 @@ const SignInGoogle = () => {
     const router = useRouter();
 
     const handlerSignInGoogle = async () => {
-        const userString = await signInWithGoogle();
-        const user = JSON.parse(userString!);
+        const user = await signInWithGoogle();
+        
         dispatch(setUser(user));
         router.push("/shop");
     };

@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
 import SignInGoogle from "../sign-in-google";
+import { takeUserDocumentFromAuth } from "@/common/utils/firebase/authentication.function";
+import { User } from "firebase/auth";
 
 const InitialSignInData: SignInData = {
     email: "",
@@ -37,7 +39,6 @@ const SignInForm = () => {
             // Handle success
             const { user } = await response.json();
             dispatch(setUser(user));
-            console.log(user);
             setFormData(InitialSignInData);
             console.log("Sign in successful!");
             router.push("/shop");

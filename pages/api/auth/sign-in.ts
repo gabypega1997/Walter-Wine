@@ -1,7 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/common/utils/firebase";
+import { auth, db } from "@/common/utils/firebase";
 
 import type { NextApiRequest, NextApiResponse } from "next";
+import { doc, getDoc } from "firebase/firestore";
 
 interface SignInRequest {
     email: string;
@@ -30,15 +31,19 @@ const signInHandler = async (
             email,
             password
         );
+        const uid = userCredential.user.uid;
 
-        const user = {
-            uid: userCredential.user.uid,
-            email: userCredential.user.email,
-        };
+        const createdUser = await (await getDoc(doc(db, "users", uid))).data();
 
-        res.status(201).json({ message: "Success!", user });
+        res.status(201).json({
+            message: "Success!",
+            user: { ...createdUser, uid },
+        });
     } catch (error) {
-        console.error("Authentication failed", (error as {message:string}).message);
+        console.error(
+            "Authentication failed",
+            (error as { message: string }).message
+        );
         res.status(400).json({ error: "Authentication failed" });
     }
 };

@@ -1,6 +1,6 @@
 import { auth, db } from "@/common/utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -11,19 +11,26 @@ const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 email,
-                password,
+                password
             );
 
-            await setDoc(doc(db, "users", userCredential.user.uid), {
+            const uid = userCredential.user.uid;
+
+            await setDoc(doc(db, "users", uid), {
                 email,
                 displayName,
                 createDate: new Date().toISOString(),
-                photoURL:"defaultProfil.jpg",
-                orders:[]
+                photoURL: "defaultProfil.jpg",
+                orders: [],
             });
 
+            const createdUser = await (
+                await getDoc(doc(db, "users", uid))
+            ).data();
+
+
             console.log("Successfully created new user");
-            res.status(201).json({ user: userCredential.user });
+            res.status(201).json({ user: { ...createdUser, uid } });
         } catch (error) {
             console.log("Error creating new user:", error);
             res.status(500).json({ message: "User Not Added" });

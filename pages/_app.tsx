@@ -9,8 +9,10 @@ import { store, persistor } from "@/common/store";
 import Layout from "@/common/components/layout";
 
 import "@/styles/globals.css";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
+
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
