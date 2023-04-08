@@ -19,8 +19,9 @@ export const signInWithGoogle = async () => {
                 email: user.email,
                 displayName: user.displayName,
                 createDate: new Date().toISOString(),
-                photoURL: "defaultProfil.jpg",
+                photoURL: "/defaultProfil.jpg",
                 orders: [],
+                uid:user.uid
             });
             console.log("Successfully user add to Db");
             const createdUser = await (

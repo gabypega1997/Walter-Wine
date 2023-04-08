@@ -1,24 +1,30 @@
 import { storage } from "./index";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { User } from "firebase/auth";
+import { UserType } from "@/common/types/user.types";
 
-export async function uploadProfilImage(file: File): Promise<void> {
-    const storageRef = ref(storage, `images/${file.name}`);
+export async function uploadProfilImage(
+    file: File,
+    user: UserType
+): Promise<void> {
+    const storageRef = ref(storage, `images/${user.uid}/${file.name}`);
     try {
         await uploadBytes(storageRef, file);
         console.log("Image uploaded successfully.");
+
     } catch (error) {
         console.error("Error uploading image:", error);
     }
 }
 
 export async function downloadUrlProfilImage(user: User) {
-    const storageRef = ref(storage, `images/${user.photoURL}`);
+    const storageRef = ref(storage, `images/${user.uid}/${user.photoURL}`);
     try {
-        const progilImageUrl = await getDownloadURL(storageRef).then(
+        const profilImageUrl = await getDownloadURL(storageRef).then(
             (url) => url
         );
-        return progilImageUrl;
+            console.log(profilImageUrl)
+        return profilImageUrl;
     } catch (error) {
         console.error((error as { message: string }).message);
         return null;

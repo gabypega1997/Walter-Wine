@@ -20,14 +20,14 @@ const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
                 email,
                 displayName,
                 createDate: new Date().toISOString(),
-                photoURL: "defaultProfil.jpg",
+                photoURL: "/defaultProfil.jpg",
                 orders: [],
+                uid,
             });
 
             const createdUser = await (
                 await getDoc(doc(db, "users", uid))
             ).data();
-
 
             console.log("Successfully created new user");
             res.status(201).json({ user: { ...createdUser, uid } });
