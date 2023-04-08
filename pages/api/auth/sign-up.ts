@@ -11,13 +11,15 @@ const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
             const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 email,
-                password
+                password,
             );
 
             await setDoc(doc(db, "users", userCredential.user.uid), {
                 email,
                 displayName,
                 createDate: new Date().toISOString(),
+                photoURL:"defaultProfil.jpg",
+                orders:[]
             });
 
             console.log("Successfully created new user");
