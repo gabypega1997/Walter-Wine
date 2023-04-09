@@ -7,24 +7,26 @@ import { UploadProfilImage } from "./upload-profil-image.component";
 
 const AccountCard = () => {
     const user = useSelector(selectUser);
-    const [photoProfilUrl, setPhotoProfilUrl] = useState(user.photoURL);
+    const [photoProfilUrl, setPhotoProfilUrl] = useState("/defaultProfil.jpg");
 
     console.log(user);
     useEffect(() => {
-        const photoUrl =  downloadUrlProfilImage(user);
-
-        setPhotoProfilUrl(photoUrl);
+        async function takePhotoUrl() {
+            const photoUrl = await downloadUrlProfilImage(user);
+            setPhotoProfilUrl(photoUrl!);
+        }
+        takePhotoUrl()
     }, [user]);
 
     return (
         <>
-            {user && user.uid}{" "}
+            {user && user.uid}
             <Image
                 className="w-[100px] h-[100px]  rounded-full"
                 width={200}
                 height={100}
                 alt={"Profil Image"}
-                src={`https://firebasestorage.googleapis.com/v0/b/walter-wine.appspot.com/o/images%2FvkXWKc1wAbSGvh0mESBbpXL5mb32%2FdefaultProfil.jpg?alt=media&token=0ac90575-3a0b-47cc-88bf-93fe01c43dc3`}
+                src={photoProfilUrl}
             ></Image>
             <UploadProfilImage user={user} />
             {user && user.displayName}
