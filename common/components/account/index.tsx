@@ -3,7 +3,6 @@ import { ProfilImage } from "./profil-image.component";
 const Account = () => {
     return (
         <>
-            <ProfilImage />
             <AccountCard />
         </>
     );
