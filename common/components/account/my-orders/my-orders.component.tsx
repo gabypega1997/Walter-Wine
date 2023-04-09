@@ -1,5 +1,5 @@
 const MyOrders = () => {
-    return <>My Orders</>;
+    return <>My Order</>;
 };
 
 export default MyOrders;
