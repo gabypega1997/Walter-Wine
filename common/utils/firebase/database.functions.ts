@@ -1,7 +1,7 @@
 import { storage } from "./index";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { User } from "firebase/auth";
 import { UserType } from "@/common/types/user.types";
+
 
 export async function uploadProfilImage(
     file: File,
@@ -16,9 +16,9 @@ export async function uploadProfilImage(
     }
 }
 
-export async function downloadUrlProfilImage(user: User) {
+export async function downloadUrlProfilImage(user: UserType, file: File) {
     try {
-        const storageRef = ref(storage, `images/${user.uid}/${user.photoURL}`);
+        const storageRef = ref(storage, `images/${user.uid}/${file.name}`);
         const profilImageUrl = await getDownloadURL(storageRef).then(
             (url) => url
         );
