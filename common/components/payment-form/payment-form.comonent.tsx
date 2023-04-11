@@ -1,18 +1,27 @@
 import { FormEvent, useState } from "react";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { selectCartTotal } from "../../store/cart/cart.selector";
+import {
+    selectCartTotal,
+    selectCartItems,
+} from "../../store/cart/cart.selector";
 import { selectUser } from "../../store/user/user.selector";
 import Spinner from "../spinner";
+import { setUser } from "@/common/store/user/user.store";
 
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const dispatch = useDispatch();
+
     const amount = useSelector(selectCartTotal);
+    const cartItems = useSelector(selectCartItems);
     const currentUser = useSelector(selectUser);
+
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
     const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!stripe || !elements) {
@@ -42,6 +51,13 @@ const PaymentForm = () => {
             alert(paymentResult.error);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
+                // dispatch(
+                //     setUser({
+                //         ...currentUser,
+                //         orders: [...currentUser.orders, cartItems],
+                //     })
+                // );
+                
                 alert("Payment Successful");
             }
         }
