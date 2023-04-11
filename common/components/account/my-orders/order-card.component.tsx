@@ -1,10 +1,13 @@
-import { Wine } from "@/common/types/wine.types"
-import { FC } from "react"
+import { CartItem, Wine } from "@/common/types/wine.types";
+import { FC } from "react";
 
 type OrderCardType = {
-    order:Wine[]
-}
+    order: CartItem;
+    index: number;
+};
 
-const OrderCard:FC<OrderCardType> = ({order}) => {
+const OrderCard: FC<OrderCardType> = ({ order, index }) => {
+    return <>Order</>;
+};
 
-}
+export default OrderCard;

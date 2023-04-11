@@ -1,4 +1,4 @@
-import { Wine } from "./wine.types";
+import { CartItem, Wine } from "./wine.types";
 
 export type SignInData = {
     email: string;
@@ -17,6 +17,6 @@ export type UserType = {
     email: string;
     createDate: string;
     photoURL: string;
-    orders: [] | Wine[];
+    orders: [] | CartItem[];
     uid:  string;
 };

@@ -20,7 +20,7 @@ const AccountCard = () => {
             </NavigationButtonAccount>
 
             <NavigationButtonAccount
-                link="/account/my-cart"
+                link="/cart"
                 imageUrl="/defaultProfil.jpg"
             >
                 My Cart
