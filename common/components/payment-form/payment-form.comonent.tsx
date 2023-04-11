@@ -10,6 +10,7 @@ import {
 import { selectUser } from "../../store/user/user.selector";
 import Spinner from "../spinner";
 import { setUser } from "@/common/store/user/user.store";
+import { updateOrderForUser } from "@/common/utils/firebase/firestore.functions";
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -51,13 +52,13 @@ const PaymentForm = () => {
             alert(paymentResult.error);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
-                // dispatch(
-                //     setUser({
-                //         ...currentUser,
-                //         orders: [...currentUser.orders, cartItems],
-                //     })
-                // );
-                
+                dispatch(
+                    setUser({
+                        ...currentUser,
+                        orders: [...currentUser.orders, cartItems],
+                    })
+                );
+                updateOrderForUser(currentUser,cartItems)
                 alert("Payment Successful");
             }
         }
