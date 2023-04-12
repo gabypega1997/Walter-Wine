@@ -7,7 +7,20 @@ type OrderCardType = {
 };
 
 const OrderCard: FC<OrderCardType> = ({ order, index }) => {
-    return <>Order</>;
+    const numberOfOrder = index + 1;
+
+    return (
+        <div>
+            <h2>Order {numberOfOrder}</h2>
+            {order.map((item) => (
+                <div key={item.id}>
+                    
+                    {item.title}
+                    
+                    </div>
+            ))}
+        </div>
+    );
 };
 
 export default OrderCard;
