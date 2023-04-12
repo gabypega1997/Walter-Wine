@@ -1,6 +1,11 @@
 import AccountCard from "./account-card.component";
+import { ProfilImage } from "./profil-image.component";
 const Account = () => {
-    return <AccountCard />;
+    return (
+        <>
+            <AccountCard />
+        </>
+    );
 };
 
 export default Account;

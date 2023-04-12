@@ -1,18 +1,27 @@
 import { FormEvent, useState } from "react";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { selectCartTotal } from "../../store/cart/cart.selector";
+import {
+    selectCartTotal,
+    selectCartItems,
+} from "../../store/cart/cart.selector";
 import { selectUser } from "../../store/user/user.selector";
+import Spinner from "../spinner";
+import { setUser } from "@/common/store/user/user.store";
+import { updateOrderForUser } from "@/common/utils/firebase/firestore.functions";
 
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const dispatch = useDispatch();
+
     const amount = useSelector(selectCartTotal);
+    const cartItems = useSelector(selectCartItems);
     const currentUser = useSelector(selectUser);
+
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-    const [clientSecret, setClientSecret] = useState("");
 
     const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -28,8 +37,7 @@ const PaymentForm = () => {
             body: JSON.stringify({ amount: amount * 100 }),
         }).then((res) => res.json());
 
-    const  {clientSecret}  = response;
-        console.log(clientSecret);
+        const { clientSecret } = response;
 
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -39,12 +47,18 @@ const PaymentForm = () => {
                 },
             },
         });
-        console.log(paymentResult.error)
         setIsProcessingPayment(false);
         if (paymentResult.error) {
             alert(paymentResult.error);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
+                dispatch(
+                    setUser({
+                        ...currentUser,
+                        orders: [...currentUser.orders, cartItems],
+                    })
+                );
+                updateOrderForUser(currentUser,cartItems)
                 alert("Payment Successful");
             }
         }
@@ -55,7 +69,7 @@ const PaymentForm = () => {
             <form onSubmit={paymentHandler}>
                 <h2>Credit Card Payment: </h2>
                 <CardElement />
-                <button>Pay now</button>
+                {isProcessingPayment ? <Spinner /> : <button>Pay now</button>}
             </form>
         </div>
     );
