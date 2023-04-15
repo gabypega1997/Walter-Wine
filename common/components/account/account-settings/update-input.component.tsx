@@ -1,5 +1,8 @@
-import { UserType } from "@/common/types/user.types";
 import { FC, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { UserType } from "@/common/types/user.types";
+import { setUser } from "@/common/store/user/user.store";
 
 type UpdateInputProps = {
     user: UserType;
@@ -10,6 +13,9 @@ const UpdateInput: FC<UpdateInputProps> = ({ user, type }) => {
     const [inputValue, setInputValue] = useState(
         type === "name" ? user.displayName : user.email
     );
+    const typeString = type === "name" ? "displayName" : "email";
+
+    const dispatch = useDispatch();
 
     const handlerUpdates = async () => {
         const response = await fetch("/api/auth/update-user", {
@@ -18,11 +24,23 @@ const UpdateInput: FC<UpdateInputProps> = ({ user, type }) => {
                 "Content-Type": "application/json",
             },
 
-            // ***********************
- **********************~~           body: JSON.stringify(inputValue),
- 
+            body: JSON.stringify(
+                type === "name"
+                    ? { user, displayName: inputValue }
+                    : { user, email: inputValue }
+            ),
         });
-        console.log(type);
+
+        if (response.ok) {
+            const updatedUser = await response
+                .json()
+                .then((data) => data.user);
+
+            dispatch(setUser(updatedUser));
+            console.log("success");
+        } else {
+            console.log("Update Failed");
+        }
     };
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
