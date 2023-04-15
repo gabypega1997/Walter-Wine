@@ -55,7 +55,7 @@ const PaymentForm = () => {
                 dispatch(
                     setUser({
                         ...currentUser,
-                        orders: [...currentUser.orders, cartItems],
+                        orders: {...currentUser.orders, cartItems},
                     })
                 );
                 updateOrderForUser(currentUser,cartItems)

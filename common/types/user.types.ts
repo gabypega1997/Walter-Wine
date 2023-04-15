@@ -17,6 +17,6 @@ export type UserType = {
     email: string;
     createDate: string;
     photoURL: string;
-    orders: [] | CartItem[][];
+    orders: {};
     uid:  string;
 };
