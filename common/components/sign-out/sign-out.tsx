@@ -10,9 +10,9 @@ const SignOut = () => {
     const handlerSignOut = async () => {
         const response = await fetch("/api/auth/sign-out");
         if (response.ok) {
+            router.push("/auth");
             dispatch(setUser(null));
             console.log("Sign Out Successfuly");
-            router.push("/auth");
         } else {
             console.log("Sign Out Failed");
         }

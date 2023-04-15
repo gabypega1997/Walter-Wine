@@ -13,7 +13,6 @@ const UpdateInput: FC<UpdateInputProps> = ({ user, type }) => {
     const [inputValue, setInputValue] = useState(
         type === "name" ? user.displayName : user.email
     );
-    const typeString = type === "name" ? "displayName" : "email";
 
     const dispatch = useDispatch();
 
@@ -32,19 +31,17 @@ const UpdateInput: FC<UpdateInputProps> = ({ user, type }) => {
         });
 
         if (response.ok) {
-            const updatedUser = await response
-                .json()
-                .then((data) => data.user);
+            const updatedUser = await response.json().then((data) => data.user);
 
             dispatch(setUser(updatedUser));
-            console.log("success");
+            console.log("Updated");
         } else {
             console.log("Update Failed");
         }
     };
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
-        const { id, value } = e.currentTarget;
+        const { value } = e.currentTarget;
         setInputValue(value);
     };
 
