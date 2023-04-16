@@ -6,7 +6,9 @@ import { db } from ".";
 export const updateOrderForUser = async (user: UserType, order: CartItem[]) => {
     const userRef = doc(db, "users", user.uid);
     try {
-        await updateDoc(userRef, { ...user, orders: {...user.orders, order} });
+        await updateDoc(userRef, {
+            ...user,
+        });
         console.log("Order uploaded successfully.");
     } catch (error) {
         console.error(error);
