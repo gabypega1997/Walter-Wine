@@ -9,8 +9,8 @@ const MyOrders = () => {
     return (
         <div>
             <h1>My Orders</h1>
-            {orders.length ? (
-                orders.map((order, index) => (
+            {orders ? (
+                orders.foreach((order, index) => (
                     <OrderCard order={order} index={index} key={index} />
                 ))
             ) : (

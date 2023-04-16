@@ -52,6 +52,7 @@ const PaymentForm = () => {
             alert(paymentResult.error);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
+                console.table(currentUser)
                 dispatch(
                     setUser({
                         ...currentUser,
