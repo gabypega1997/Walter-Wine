@@ -53,12 +53,6 @@ const PaymentForm = () => {
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
                 console.table(currentUser)
-                dispatch(
-                    setUser({
-                        ...currentUser,
-                        orders: {...currentUser.orders, cartItems},
-                    })
-                );
                 updateOrderForUser(currentUser,cartItems)
                 alert("Payment Successful");
             }

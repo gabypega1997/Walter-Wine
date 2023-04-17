@@ -21,7 +21,7 @@ const SignUpApi = async (req: NextApiRequest, res: NextApiResponse) => {
                 displayName,
                 createDate: new Date().toISOString(),
                 photoURL: "/defaultProfil.jpg",
-                orders: {},
+                orders: [],
                 uid,
             });
 

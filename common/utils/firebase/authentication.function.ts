@@ -20,7 +20,7 @@ export const signInWithGoogle = async () => {
                 displayName: user.displayName,
                 createDate: new Date().toISOString(),
                 photoURL: "/defaultProfil.jpg",
-                orders: {},
+                orders: null,
                 uid: user.uid,
             });
             console.log("Successfully user add to Db");
