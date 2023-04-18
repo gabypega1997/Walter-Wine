@@ -52,8 +52,17 @@ const PaymentForm = () => {
             alert(paymentResult.error);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
-                console.table(currentUser)
-                updateOrderForUser(currentUser,cartItems)
+                console.table(currentUser);
+                updateOrderForUser(currentUser, cartItems);
+
+                // ******************* Store orders to redux *************
+
+                // dispatch(
+                //     setUser({
+                //         ...currentUser,
+                //         orders: [...currentUser.orders, cartItems],
+                //     })
+                // );
                 alert("Payment Successful");
             }
         }
