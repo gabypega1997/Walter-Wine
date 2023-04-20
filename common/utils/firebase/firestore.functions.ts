@@ -27,14 +27,15 @@ export const updateOrderForUser = async (user: UserType, order: CartItem[]) => {
 };
 
 export const getOrdersFromUser = async (user: UserType) => {
-    const ordersRef = collection(db, "users", user.uid, "orders");
-    console.log(ordersRef.path); // Log the ordersRef variable
+    const ordersRef = doc(db, "users", user.uid);
     try {
-        const querySnapshot = await getDocs(ordersRef);
-        const orders = querySnapshot.docs.map((doc) => doc.data());
-
-        console.log(orders);
-        return orders;
+        const querySnapshot = await getDoc(ordersRef);
+        if (querySnapshot.exists()) {
+            const orders = querySnapshot.data()!.orders;
+            return orders;
+        } else {
+            return undefined;
+        }
     } catch (error) {
         console.error(error);
     }

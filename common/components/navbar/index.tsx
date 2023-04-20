@@ -16,7 +16,7 @@ const Navbar = () => {
                 height={50}
                 alt="Logo WalterWine"
             />
-            {/* <SearchForm /> */}
+            <SearchForm />
 
             <NavbarButton link="/">Home</NavbarButton>
             <NavbarButton link="/about">About us</NavbarButton>
