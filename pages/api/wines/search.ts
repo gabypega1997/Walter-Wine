@@ -1,5 +1,6 @@
 import { SearchQuery, SearchResult } from "@/common/types/wine.types";
 import { db } from "@/common/utils/firebase";
+import { capitalizeFirstLetter } from "@/common/utils/functions/general.functions";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -12,7 +13,8 @@ const searchWine = async (
     try {
         const q = await query(
             collection(db, "wines"),
-            where("title", "==", title)
+            where("title", ">=", capitalizeFirstLetter(title)),
+            where("title", "<=", capitalizeFirstLetter(title) + "\uf8ff")
         );
         const querySnapshot = await getDocs(q);
 
