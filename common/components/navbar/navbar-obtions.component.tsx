@@ -3,12 +3,17 @@ import { selectUser } from "@/common/store/user/user.selector";
 
 import SignOut from "../sign-out";
 import NavbarButton from "./navbar-button.component";
+import { FC } from "react";
 
-const NavbarOptionst = () => {
+type NabarOptionsProps = {
+    type: string;
+};
+
+const NavbarOptions: FC<NabarOptionsProps> = ({ type }) => {
     const user = useSelector(selectUser);
-
+    const styleContainer = type === "desktop" ? " hidden sm:flex " : " ";
     return (
-        <div className="hidden sm:flex">
+        <div className={styleContainer}>
             <NavbarButton link="/">Home</NavbarButton>
             <NavbarButton link="/about">About us</NavbarButton>
             <NavbarButton link="/cart" style="shop">
@@ -30,4 +35,4 @@ const NavbarOptionst = () => {
     );
 };
 
-export default NavbarOptionst;
+export default NavbarOptions;
