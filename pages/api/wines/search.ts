@@ -11,6 +11,9 @@ const searchWine = async (
     const { title } = req.query as SearchQuery;
 
     try {
+        if(title.length === 0) {
+            res.status(200).json([])
+        }
         const q = await query(
             collection(db, "wines"),
             where("title", ">=", capitalizeFirstLetter(title)),
