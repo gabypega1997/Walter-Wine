@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-
+import { useRouter } from "next/router";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,12 +9,13 @@ import {
 } from "../../store/cart/cart.selector";
 import { selectUser } from "../../store/user/user.selector";
 import Spinner from "../spinner";
-import { setUser } from "@/common/store/user/user.store";
 import { updateOrderForUser } from "@/common/utils/firebase/firestore.functions";
+import { clearCart } from "@/common/store/cart/cart.reducer";
 
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const router = useRouter();
     const dispatch = useDispatch();
 
     const amount = useSelector(selectCartTotal);
@@ -52,7 +53,6 @@ const PaymentForm = () => {
             alert(paymentResult.error);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
-                console.table(currentUser);
                 updateOrderForUser(currentUser, cartItems);
 
                 // ******************* Store orders to redux *************
@@ -63,7 +63,9 @@ const PaymentForm = () => {
                 //         orders: [...currentUser.orders, cartItems],
                 //     })
                 // );
-                alert("Payment Successful");
+
+                router.push("/confirmation");
+                dispatch(clearCart());
             }
         }
     };
