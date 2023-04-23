@@ -11,7 +11,7 @@ type NabarOptionsProps = {
 
 const NavbarOptions: FC<NabarOptionsProps> = ({ type }) => {
     const user = useSelector(selectUser);
-    const styleContainer = type === "desktop" ? " hidden sm:flex " : " ";
+    const styleContainer = type === "desktop" ? " hidden sm:flex " : "flex flex-col mt-24 gap-5";
     return (
         <div className={styleContainer}>
             <NavbarButton link="/">Home</NavbarButton>

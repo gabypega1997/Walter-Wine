@@ -1,5 +1,4 @@
-import { MouseEvent, useState } from "react";
-import NavbarOptions from "./navbar-obtions.component";
+import {  useState } from "react";
 import BurgerMenu from "./burger-menu.component";
 
 const BurgerButton = () => {
@@ -10,7 +9,7 @@ const BurgerButton = () => {
     };
     console.log(burgerMenuIsOpen);
     return (
-        <div className="">
+        <>
             <button
                 className={`flex flex-col gap-1 sm:hidden relative z-50 `}
                 onClick={handleBurgerMenuIsOpen}
@@ -41,7 +40,7 @@ const BurgerButton = () => {
             {burgerMenuIsOpen && (
                 <BurgerMenu handlerBurgerMenuIsOpen={handleBurgerMenuIsOpen} />
             )}
-        </div>
+        </>
     );
 };
 
