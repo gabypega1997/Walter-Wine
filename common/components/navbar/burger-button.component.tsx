@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import NavbarOptions from "./navbar-obtions.component";
+import BurgerMenu from "./burger-menu.component";
 
 const BurgerButton = () => {
     const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
 
+    const handleBurgerMenuIsOpen = () => {
+        setBurgerMenuIsOpen((state) => !state);
+    };
     console.log(burgerMenuIsOpen);
     return (
         <div className="">
             <button
-                className={`flex flex-col gap-1 sm:hidden relative z-50 transition-all transform duration-500`}
-                onClick={() => setBurgerMenuIsOpen((state) => !state)}
+                className={`flex flex-col gap-1 sm:hidden relative z-50 `}
+                onClick={handleBurgerMenuIsOpen}
             >
                 <div
                     className={`w-10 h-1 transform bg-gray-900 rounded-md duration-500 ${
@@ -20,7 +24,9 @@ const BurgerButton = () => {
                 ></div>
                 <div
                     className={`w-10 h-1 transform bg-gray-900 rounded-md ${
-                        burgerMenuIsOpen ? "opacity-0 " : "opacity-100 duration-500"
+                        burgerMenuIsOpen
+                            ? "opacity-0 "
+                            : "opacity-100 duration-500"
                     }`}
                 ></div>
                 <div
@@ -33,12 +39,7 @@ const BurgerButton = () => {
             </button>
 
             {burgerMenuIsOpen && (
-                <>
-                    <div className="absolute top-0 left-0 z-10 w-1/2 h-full bg-slate-100 opacity-30"></div>
-                    <div className="absolute top-0 z-20 w-1/2 h-full bg-gray-500 left-1/2">
-                        <NavbarOptions type={"mobile"} />
-                    </div>
-                </>
+                <BurgerMenu handlerBurgerMenuIsOpen={handleBurgerMenuIsOpen} />
             )}
         </div>
     );
