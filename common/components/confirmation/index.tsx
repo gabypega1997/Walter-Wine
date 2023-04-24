@@ -1,5 +1,13 @@
+import ConfirmationMessage from "./confirmation-message.component";
+import TruckAnimation from "./truck-animation.component";
+
 const ConfirmationOrder = () => {
-    return <>Your order is on its way</>;
+    return (
+        <>
+            <ConfirmationMessage />
+            <TruckAnimation />
+        </>
+    );
 };
 
 export default ConfirmationOrder;
