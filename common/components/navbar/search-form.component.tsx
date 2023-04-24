@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { SearchResult } from "@/common/types/wine.types";
 import Image from "next/image";
 
-
 const SearchForm = () => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<SearchResult[]>([]);
@@ -16,30 +15,46 @@ const SearchForm = () => {
     }, [query]);
 
     return (
-        <div className="flex items-center m-3">
-            <input
-                type="text"
-                placeholder="Search for a product"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                className="py-2 pl-2 text-sm pr-7 rounded-xl focus:border-gray-light"
-            />
-            <span className="-ml-7">
-                <Image src="/images/search.png" alt="search icon" width={20} height={20} />
-            </span>
+        <div>
+            <div className="relative flex flex-wrap items-center">
+                <input
+                    type="text"
+                    placeholder="Search"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    className={`w-40 py-1.5 pl-3 text-sm pr-7 
+                border-2 rounded-xl  focus:outline-none focus:border-gray-light focus:border-1 ${
+                    results.length > 0 ? " rounded-b-none " : ""
+                }`}
+                />
+                <span className="-ml-8">
+                    <Image
+                        src="/images/search.png"
+                        alt="search icon"
+                        width={25}
+                        height={20}
+                    />
+                </span>
+            </div>
 
             {results.length > 0 && (
-                <ul className="absolute z-50 bg-white">
+                <ul className="absolute z-50 w-40 -mt-1 bg-white border-2 border-t-0 border-gray-light">
                     {results.map((result) => (
-                        <li key={result.id} className="flex p-2">
+                        <li
+                            key={result.id}
+                            className="flex p-2 text-xs border-b-2"
+                        >
                             <Image
                                 src="/wine1.png"
                                 alt={result.title}
-                                width={30}
+                                width={20}
                                 height={50}
                             />
-                            <span>{result.title} </span>
-                            <span>${result.price}</span>
+                            <div className="">
+                                <span>{result.title} </span>
+                                <br />
+                                <span>${result.price}</span>
+                            </div>
                         </li>
                     ))}
                 </ul>
