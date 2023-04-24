@@ -6,7 +6,7 @@ import LogoImage from "./logo-image.compoent";
 
 const Navbar = () => {
     return (
-        <div className="flex items-center justify-between px-5 bg-green-800">
+        <div className="flex items-center justify-between px-5 bg-gray-dark">
             <LogoImage />
 
             <SearchForm />

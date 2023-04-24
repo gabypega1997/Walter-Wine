@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { SearchResult } from "@/common/types/wine.types";
 import Image from "next/image";
 
+
 const SearchForm = () => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<SearchResult[]>([]);
@@ -15,13 +16,18 @@ const SearchForm = () => {
     }, [query]);
 
     return (
-        <div className="m-3">
+        <div className="flex items-center m-3">
             <input
                 type="text"
                 placeholder="Search for a product"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
+                className="py-2 pl-2 text-sm pr-7 rounded-xl focus:border-gray-light"
             />
+            <span className="-ml-7">
+                <Image src="/images/search.png" alt="search icon" width={20} height={20} />
+            </span>
+
             {results.length > 0 && (
                 <ul className="absolute z-50 bg-white">
                     {results.map((result) => (

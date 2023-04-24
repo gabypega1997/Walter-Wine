@@ -6,7 +6,7 @@ const LogoImage = () => {
         <NavbarButton link="/">
             <Image
                 src="/LogoWeb.png"
-                width={40}
+                width={20}
                 height={50}
                 alt="Logo WalterWine"
             />
