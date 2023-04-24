@@ -12,7 +12,7 @@ const NavbarButton: FC<NavbarButtonProps> = ({ children, link, style }) => {
         <Link
             href={link}
             className={
-                `${style ? "text-red-500" : "text-yellow-500"}`}
+                ` text-2xl text-center py-5 ${style ? " bg-brown " : " bg-yellow "}`}
         >
             {children}
         </Link>

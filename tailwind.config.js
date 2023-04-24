@@ -14,7 +14,7 @@ module.exports = {
                     dark: "#424242",
                 },
                 wine: "#5B0005",
-                yellow: "#FFE688",
+                yellow: "#F4E6B0",
                 brown: "#CC8E6E",
             },
         },

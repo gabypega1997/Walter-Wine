@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import BurgerMenu from "./burger-menu.component";
 
 const BurgerButton = () => {
@@ -15,7 +15,7 @@ const BurgerButton = () => {
                 onClick={handleBurgerMenuIsOpen}
             >
                 <div
-                    className={`w-10 h-1 transform rounded-md duration-500 ${
+                    className={`w-10 h-1 transform rounded-md duration-500    ${
                         burgerMenuIsOpen
                             ? " rotate-45 origin-center translate-y-2 bg-gray-dark"
                             : " rotate-0  bg-gray-light"
@@ -29,7 +29,7 @@ const BurgerButton = () => {
                     }`}
                 ></div>
                 <div
-                    className={`w-10 h-1 transform  rounded-md duration-500 ${
+                    className={`w-10 h-1 transform  rounded-md duration-500   ${
                         burgerMenuIsOpen
                             ? " -rotate-45 origin-center -translate-y-2 bg-gray-dark "
                             : " rotate-0  bg-gray-light "
