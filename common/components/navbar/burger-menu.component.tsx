@@ -1,6 +1,5 @@
 import { FC } from "react";
 import NavbarOptions from "./navbar-obtions.component";
-import Image from "next/image";
 
 type BurgerMenuProps = {
     handlerBurgerMenuIsOpen: () => void;
@@ -15,9 +14,10 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ handlerBurgerMenuIsOpen }) => {
                 onClick={handlerBurgerMenuIsOpen}
             ></div>
             <div
-                className="absolute top-0 z-20 w-1/2 h-full bg-gray-light left-1/2 bg-[url('/images/grapeSeeds.png')]"
+                className="absolute top-0 z-20 w-1/2 h-full bg-gray-light left-1/2"
                 onClick={handlerBurgerMenuIsOpen}
             >
+                <div className="absolute  -z-10 w-full h-full top-0  bg-[url('/images/grapeSeeds.png')] opacity-50"></div>
                 <NavbarOptions isBurgerMenu />
             </div>
         </>
