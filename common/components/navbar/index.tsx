@@ -12,7 +12,7 @@ const Navbar = () => {
             <SearchForm />
 
             {/* desktop */}
-            <NavbarOptions type="desktop" />
+            <NavbarOptions />
 
             {/* mobile version */}
             <BurgerButton />

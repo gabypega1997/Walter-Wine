@@ -11,14 +11,13 @@ type NabarOptionsProps = {
 
 const NavbarOptions: FC<NabarOptionsProps> = ({ isBurgerMenu }) => {
     const user = useSelector(selectUser);
-    const styleContainer =
-        type === "desktop"
-            ? " hidden sm:flex gap-5 "
-            : "flex flex-col mt-24 gap-5";
-    const styleSignOutButton =
-        type === "desktop"
-            ? "text-sm font-bold text-yellow"
-            : "bg-yellow text-2xl p-5 text-wine";
+    const styleContainer = isBurgerMenu
+        ? "flex flex-col mt-24 gap-5"
+        : " hidden sm:flex gap-5 ";
+
+    const styleSignOutButton = isBurgerMenu
+        ? "bg-yellow text-2xl p-5 text-wine"
+        : "text-sm font-bold text-yellow";
     return (
         <div className={styleContainer}>
             <NavbarButton link="/">Home</NavbarButton>
