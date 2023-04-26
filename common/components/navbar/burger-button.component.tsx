@@ -7,7 +7,6 @@ const BurgerButton = () => {
     const handleBurgerMenuIsOpen = () => {
         setBurgerMenuIsOpen((state) => !state);
     };
-    console.log(burgerMenuIsOpen);
     return (
         <>
             <button

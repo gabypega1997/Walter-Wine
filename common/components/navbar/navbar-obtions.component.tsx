@@ -6,27 +6,34 @@ import NavbarButton from "./navbar-button.component";
 import { FC } from "react";
 
 type NabarOptionsProps = {
-    type: string;
+    isBurgerMenu?: boolean;
 };
 
-const NavbarOptions: FC<NabarOptionsProps> = ({ type }) => {
+const NavbarOptions: FC<NabarOptionsProps> = ({ isBurgerMenu }) => {
     const user = useSelector(selectUser);
-    const styleContainer = type === "desktop" ? " hidden sm:flex " : "flex flex-col mt-24 gap-5";
+    const styleContainer =
+        type === "desktop"
+            ? " hidden sm:flex gap-5 "
+            : "flex flex-col mt-24 gap-5";
+    const styleSignOutButton =
+        type === "desktop"
+            ? "text-sm font-bold text-yellow"
+            : "bg-yellow text-2xl p-5 text-wine";
     return (
         <div className={styleContainer}>
             <NavbarButton link="/">Home</NavbarButton>
             <NavbarButton link="/about">About us</NavbarButton>
-            <NavbarButton link="/cart" style="shop">
+            <NavbarButton link="/cart" isShopButton>
                 Shopping Cart
             </NavbarButton>
-            <NavbarButton link="/shop" style="shop">
+            <NavbarButton link="/shop" isShopButton>
                 Shop
             </NavbarButton>
 
             {user ? (
                 <>
                     <NavbarButton link="/account">My Account</NavbarButton>
-                    <SignOut />
+                    <SignOut buttonStyle={styleSignOutButton} />
                 </>
             ) : (
                 <NavbarButton link="/auth">Authentication</NavbarButton>

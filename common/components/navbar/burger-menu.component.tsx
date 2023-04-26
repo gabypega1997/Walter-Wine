@@ -14,7 +14,7 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ handlerBurgerMenuIsOpen }) => {
                 onClick={handlerBurgerMenuIsOpen}
             ></div>
             <div className="absolute top-0 z-20 w-1/2 h-full bg-gray-light left-1/2">
-                <NavbarOptions type={"mobile"} />
+                <NavbarOptions type="mobile" />
             </div>
         </>
     );

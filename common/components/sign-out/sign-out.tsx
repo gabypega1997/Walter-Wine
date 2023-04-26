@@ -2,8 +2,12 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
 import { setUser } from "@/common/store/user/user.store";
+import { FC } from "react";
 
-const SignOut = () => {
+type SignOutProps = {
+    buttonStyle: string;
+};
+const SignOut: FC<SignOutProps> = ({ buttonStyle }) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -19,7 +23,7 @@ const SignOut = () => {
     };
 
     return (
-        <button className="bg-red-600" onClick={handlerSignOut}>
+        <button className={buttonStyle} onClick={handlerSignOut}>
             Sign Out
         </button>
     );
