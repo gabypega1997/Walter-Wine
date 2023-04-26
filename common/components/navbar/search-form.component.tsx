@@ -23,7 +23,7 @@ const SearchForm = () => {
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     className={`w-40 py-1.5 pl-3 text-sm pr-7 
-                border-2 rounded-xl  focus:outline-none focus:border-gray-light focus:border-1 ${
+                border-2 rounded-xl  focus:outline-none lg:w-52 xl:w-64 2xl:w-72  focus:border-gray-light focus:border-1 ${
                     results.length > 0 ? " rounded-b-none " : ""
                 }`}
                 />
@@ -38,7 +38,7 @@ const SearchForm = () => {
             </div>
 
             {results.length > 0 && (
-                <ul className="absolute z-50 w-40 -mt-1 bg-white border-2 border-t-0 border-gray-light">
+                <ul className="absolute z-50 w-40 -mt-1 bg-white border-2 border-t-0 lg:w-52 xl:w-64 2xl:w-72 border-gray-light">
                     {results.map((result) => (
                         <li
                             key={result.id}

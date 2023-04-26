@@ -13,7 +13,7 @@ const NavbarOptions: FC<NabarOptionsProps> = ({ isBurgerMenu }) => {
     const user = useSelector(selectUser);
     const styleContainer = isBurgerMenu
         ? "flex flex-col mt-24 gap-5"
-        : " hidden sm:flex gap-5 ";
+        : " hidden sm:flex gap-5  lg:gap-7 lg:scale-110";
 
     const styleSignOutButton = isBurgerMenu
         ? "bg-yellow text-2xl p-5 text-wine"

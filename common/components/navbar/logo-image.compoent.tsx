@@ -1,16 +1,17 @@
 import Image from "next/image";
-import NavbarButton from "./navbar-button.component";
+import Link from "next/link";
 
 const LogoImage = () => {
     return (
-        <NavbarButton link="/">
+        <Link href="/">
             <Image
                 src="/LogoWeb.png"
                 width={20}
                 height={50}
                 alt="Logo WalterWine"
+                className="sm:scale-110 md:scale-125 lg:scale-150"
             />
-        </NavbarButton>
+        </Link>
     );
 };
 
