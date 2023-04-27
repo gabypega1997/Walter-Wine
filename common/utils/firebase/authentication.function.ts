@@ -20,15 +20,14 @@ export const signInWithGoogle = async () => {
                 displayName: user.displayName,
                 createDate: new Date().toISOString(),
                 photoURL: "/defaultProfil.jpg",
-                orders: [],
-                uid:user.uid
+                orders: null,
+                uid: user.uid,
             });
             console.log("Successfully user add to Db");
-            const createdUser = await (
+            const createdUser = (await (
                 await getDoc(doc(db, "users", user.uid))
-            ).data() as UserType;
+            ).data()) as UserType;
             return createdUser;
-
         }
 
         console.log("Successfully sign in with google ");

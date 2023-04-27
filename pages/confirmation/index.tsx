@@ -1,5 +1,7 @@
+import ConfirmationOrder from "@/common/components/confirmation";
+
 function Index() {
-    return <div>Confirmation</div>;
+    return <ConfirmationOrder />;
 }
 
 export default Index;

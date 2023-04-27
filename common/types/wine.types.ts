@@ -10,3 +10,14 @@ export type Wine = {
 export type CartItem = {
     quantity?: number;
 } & Wine;
+
+export type SearchQuery = {
+    title: string;
+};
+
+export type SearchResult = {
+    id: string;
+    title: string;
+    description: string;
+    price: number;
+};

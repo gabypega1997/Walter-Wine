@@ -2,7 +2,7 @@ import { auth, db } from "@/common/utils/firebase";
 import { UserType } from "@/common/types/user.types";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { doc, updateDoc } from "firebase/firestore";
-import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
+import { updateProfile, updateEmail } from "firebase/auth";
 
 type UpdateUserRequest = {
     user: UserType;
@@ -21,8 +21,7 @@ const updateUserHandler = async (
     }
 
     try {
-        const { user, displayName, email, password } =
-            req.body as UpdateUserRequest;
+        const { user, displayName, email } = req.body as UpdateUserRequest;
 
         if (!user) {
             res.status(400).json({ error: "User not provided" });
@@ -37,9 +36,6 @@ const updateUserHandler = async (
             }
             if (email) {
                 await updateEmail(authUser, email);
-            }
-            if (password) {
-                await updatePassword(authUser, password);
             }
         }
 
