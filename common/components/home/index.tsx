@@ -6,9 +6,9 @@ const Home = () => {
             <h1>Home</h1>
             <Button type="buy">Buy Now</Button>
             <br />
-            <Button type="sign-in">sign-in</Button>
+            <Button type="sign-in" isPoligon>sign-in</Button>
             <br />
-            <Button type="google">Google</Button>
+            <Button type="google" isPoligon>Google</Button>
             <br />
             <Button type="purchase">Purchase</Button>
             <br />

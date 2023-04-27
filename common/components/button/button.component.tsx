@@ -2,26 +2,52 @@ import { FC, ReactNode } from "react";
 
 type ButtonProps = {
     children: ReactNode;
-    type: "buy" | "read" | "purchase" | "sign-in" | "google";
+    type: "buy" | "read" | "purchase" | "sign-in" | "google" | "continue";
+    isPoligon?: boolean;
 };
 
-const Button: FC<ButtonProps> = ({ type, children }) => {
+const Button: FC<ButtonProps> = ({ type, children, isPoligon }) => {
+    const polygonShapeStyle = {
+        clipPath:
+            "polygon(100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%,0% 0%)",
+    };
+
+    // sign-in google
+    const smallButton = " h-10 w-32 rounded-lg ";
+
+    // buy read continue
+    const mediumButton = " h-14 w-32 rounded-lg ";
+
+    // purchase
+    const largeButton = "  h-16 w-36 rounded-lg text-xl ";
+
     const buttonStyle = (): string => {
         switch (type) {
             case "buy":
-                return " bg-brown rounded-lg py-4 px-6 ";
+                return `${mediumButton}" bg-brown "`;
             case "read":
-                return " bg-yellow rounded-lg py-4 px-6   ";
+                return `${mediumButton}" bg-yellow "`;
             case "purchase":
-                return " bg-brown text-white rounded-lg py-5 px-7  text-xl";
+                return `${largeButton}" bg-brown text-white"`;
             case "google":
-                return " bg-yellow ";
+                return `${smallButton}" bg-yellow "`;
             case "sign-in":
-                return "bg-brown";
+                return `${smallButton}" bg-brown "`;
+            case "continue":
+                return `${largeButton}" bg-green-200"`;
+            default:
+                return " ";
         }
     };
 
-    return <button className={`${buttonStyle()} font-medium`}>{children}</button>;
+    return (
+        <button
+            className={`${buttonStyle()} font-medium`}
+            style={isPoligon ? polygonShapeStyle : {}}
+        >
+            {children}
+        </button>
+    );
 };
 
 export default Button;
