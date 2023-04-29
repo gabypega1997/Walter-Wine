@@ -15,21 +15,21 @@ const Home = () => {
                 Welcome to the world of wines, where taste and aroma blend with
                 art and passion.
             </h2>
-            <div className="flex">
-                <div className="bg-white">
+            <div className="flex justify-between items-center text-lg gap-2">
+                <div className="bg-white bg-opacity-40 py-1  rounded-2xl px-8 leading-5">
                     &quot;Wines vary in taste, aroma, origin, technique.&quot;
-                    -Jack
+                    <br />
+                    <span className="ml-28">-Jack</span>
                 </div>
-                <div className=" bg-white">
-                    <div className="w-full h-full flex flex-col justify-center items-center backdrop-blur-lg">
-                        {" "}
-                        More Reviews
-                    </div>
+
+                <div className=" bg-white bg-opacity-40 py-3 rounded-xl min-w-fit px-2">
                     More Reviews
                 </div>
             </div>
-            <Button type="buy">Buy Now</Button>
-            <Button type="read">Read More</Button>
+            <div className="flex flex-col gap-5 mt-12 items-end mr-12">
+                <Button type="buy">Buy Now</Button>
+                <Button type="read">Read More</Button>
+            </div>
         </div>
     );
 };
