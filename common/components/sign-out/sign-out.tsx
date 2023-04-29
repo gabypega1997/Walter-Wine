@@ -5,7 +5,7 @@ import { setUser } from "@/common/store/user/user.store";
 import { FC } from "react";
 
 type SignOutProps = {
-    buttonStyle: string;
+    buttonStyle?: string;
 };
 const SignOut: FC<SignOutProps> = ({ buttonStyle }) => {
     const dispatch = useDispatch();

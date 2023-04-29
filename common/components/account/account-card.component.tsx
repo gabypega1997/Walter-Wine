@@ -19,10 +19,7 @@ const AccountCard = () => {
                 My Orders
             </NavigationButtonAccount>
 
-            <NavigationButtonAccount
-                link="/cart"
-                imageUrl="/defaultProfil.jpg"
-            >
+            <NavigationButtonAccount link="/cart" imageUrl="/defaultProfil.jpg">
                 My Cart
             </NavigationButtonAccount>
 
