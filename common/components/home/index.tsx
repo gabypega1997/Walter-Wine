@@ -4,6 +4,7 @@ import Button from "../button/button.component";
 const Home = () => {
     return (
         <div className="bg-gray-dark py-10 ">
+            {/* jumbotron */}
             <Image
                 src="/images/home/bottleWine.png"
                 width={300}
@@ -15,17 +16,24 @@ const Home = () => {
                 Welcome to the world of wines, where taste and aroma blend with
                 art and passion.
             </h2>
+
+            {/* review  */}
             <div className="flex justify-between items-center text-lg gap-2">
-                <div className="bg-white bg-opacity-40 py-3  rounded-2xl px-8 leading-5">
-                    &quot;Wines vary in taste, aroma, origin, technique.&quot;
-                    <br />
+                <div className=" py-3  rounded-2xl px-8 leading-5 backdrop-blur-lg bg-white/30">
+                    <p className="backdrop-shadow-lg">
+                        &quot;Wines vary in taste, aroma, origin,
+                        technique.&quot;
+                    </p>
+
                     <span className="ml-28">-Jack</span>
                 </div>
 
-                <div className=" bg-white bg-opacity-40 py-3 rounded-xl min-w-fit px-2">
+                <div className=" backdrop-blur-lg bg-white/30 py-3 rounded-xl min-w-fit px-2">
                     More Reviews
                 </div>
             </div>
+            {/* Background poligons */}
+
             <div className="flex flex-col gap-5 mt-12 items-end mr-12">
                 <Button type="buy">Buy Now</Button>
                 <Button type="read">Read More</Button>
