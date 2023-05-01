@@ -1,11 +1,10 @@
+import About from "@/common/components/about";
 
 const Index = () => {
-
     return (
-        <>
-            About
-
-        </>
+        <div className="bg-gray-dark py-12">
+            <About />
+        </div>
     );
 };
 
