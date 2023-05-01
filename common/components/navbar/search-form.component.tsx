@@ -23,7 +23,7 @@ const SearchForm = () => {
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     className={`w-40 py-1.5 pl-3 text-sm pr-7 
-                border-2 rounded-xl  focus:outline-none lg:w-52 xl:w-64 2xl:w-72  focus:border-gray-light focus:border-1 ${
+                border-2 rounded-2xl  focus:outline-none lg:w-52 xl:w-64 2xl:w-72  focus:border-gray-light focus:border-1 ${
                     results.length > 0 ? " rounded-b-none " : ""
                 }`}
                 />
