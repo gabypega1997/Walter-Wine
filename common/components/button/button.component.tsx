@@ -43,7 +43,7 @@ const Button: FC<ButtonProps> = ({ type, children, isPoligon, onClickFunc }) => 
 
     return (
         <button
-            className={`${buttonStyle()} font-medium`}
+            className={`${buttonStyle()} font-medium drop-shadow-lg`}
             style={isPoligon ? polygonShapeStyle : {}}
             onClick={onClickFunc}
         >
