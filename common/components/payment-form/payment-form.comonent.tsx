@@ -1,6 +1,13 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+    CardElement,
+    useStripe,
+    useElements,
+    CardNumberElement,
+    CardExpiryElement,
+    CardCvcElement,
+} from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -11,6 +18,7 @@ import { selectUser } from "../../store/user/user.selector";
 import Spinner from "../spinner";
 import { updateOrderForUser } from "@/common/utils/firebase/firestore.functions";
 import { clearCart } from "@/common/store/cart/cart.reducer";
+import Button from "../button/button.component";
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -72,12 +80,14 @@ const PaymentForm = () => {
 
     return (
         <div>
-            <form onSubmit={paymentHandler}>
+            <form onSubmit={paymentHandler} className="flex flex-col items-center">
                 <h2>Credit Card Payment: </h2>
-                <CardElement />
 
-                
-                {isProcessingPayment ? <Spinner /> : <button>Pay now</button>}
+                <CardElement className="p-5 text-2xl w-full" />
+
+                <Button type="purchase">
+                    {isProcessingPayment ? <Spinner /> : "Pay now"}
+                </Button>
             </form>
         </div>
     );
