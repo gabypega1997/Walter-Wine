@@ -9,6 +9,7 @@ import Image from "next/image";
 import { selectUser } from "@/common/store/user/user.selector";
 import Payment from "../payment-form";
 import Link from "next/link";
+import CartCard from "./cart-card.component";
 
 const CartCheckout = () => {
     const cartItems = useSelector(selectCartItems);
@@ -16,7 +17,7 @@ const CartCheckout = () => {
     const currentUser = useSelector(selectUser);
 
     return (
-        <div>
+        <div className="min-h-screen">
             {/* Images component */}
 
             <h1 className="p-3 text-2xl font-bold text-center text-white bg-gray-dark">
@@ -29,26 +30,29 @@ const CartCheckout = () => {
                     </div>
                 )}
                 {cartItems &&
-                    cartItems.map((item: Wine) => (
-                        <div
-                            key={item.id}
-                            className="flex p-5 m-5 overflow-scroll bg-yellow h-52 rounded-3xl min-w-fit"
-                        >
-                            <Image
-                                src="/wine1.png"
-                                width={80}
-                                height={30}
-                                alt="fsa"
-                            ></Image>
-                        </div>
+                    cartItems.map((item: CartItem) => (
+                        // <div key={item.id} className="overflow-scroll ">
+                        //     <div
+                        //         key={item.id}
+                        //         className="flex py-3 px-5 m-5 overflow-scroll bg-yellow h-56 flex-col rounded-3xl min-w-fit"
+                        //     >
+                        //         <Image
+                        //             src="/wine1.png"
+                        //             width={80}
+                        //             height={30}
+                        //             alt="fsa"
+                        //         ></Image>
+                        //     </div>
+                        // </div>
+                        <CartCard cartItem={item} key={item.id} />
                     ))}
             </div>
 
             {/*   Price compoentn   */}
-            <div className="p-4">
+            <div className="p-4 w-4/5 font-semibold">
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
-                        <div key={item.id} className="font-semibold">
+                        <div key={item.id} className="">
                             <div className="flex py-1">
                                 <div className="w-3/5">
                                     {item.title}
@@ -58,15 +62,19 @@ const CartCheckout = () => {
                                     {"x"}
                                     {item.quantity}
                                 </div>
-                                <div className="w-1/5">
+                                <div className="w-1/5 text-end">
                                     {" $"}
                                     {item.price}{" "}
                                 </div>
                             </div>
                         </div>
                     ))}
-
-                {cartTotal > 0 && <p>Total: {cartTotal}$</p>}
+                {cartTotal > 0 && (
+                    <div className="flex justify-between pt-2 ">
+                        <hr />
+                        <span>Total:</span> <span>${cartTotal}</span>
+                    </div>
+                )}
             </div>
 
             {/* LogIn Component */}
