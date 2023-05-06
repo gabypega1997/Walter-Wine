@@ -75,6 +75,8 @@ const PaymentForm = () => {
             <form onSubmit={paymentHandler}>
                 <h2>Credit Card Payment: </h2>
                 <CardElement />
+
+                
                 {isProcessingPayment ? <Spinner /> : <button>Pay now</button>}
             </form>
         </div>

@@ -4,12 +4,12 @@ import {
     selectCartItems,
     selectCartTotal,
 } from "@/common/store/cart/cart.selector";
-import { CartItem, Wine } from "@/common/types/wine.types";
-import Image from "next/image";
+import { CartItem} from "@/common/types/wine.types";
 import { selectUser } from "@/common/store/user/user.selector";
 import Payment from "../payment-form";
 import Link from "next/link";
 import CartCard from "./cart-card.component";
+import PriceTabel from "./price-tabel.component";
 
 const CartCheckout = () => {
     const cartItems = useSelector(selectCartItems);
@@ -39,30 +39,15 @@ const CartCheckout = () => {
             <div className="p-6  font-semibold">
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
-                        <div key={item.id} className="">
-                            <div className="flex py-1">
-                                <div className="w-3/5">
-                                    {item.title}
-                                    {":"}
-                                </div>
-                                <div className="w-1/5">
-                                    {item.price}${" x "}
-                                    {item.quantity}
-                                </div>
-                                <div className="w-1/5 pl-4">
-                                    {" $"}
-                                    {item.price * item.quantity!}{" "}
-                                </div>
-                            </div>
-                        </div>
+                        <PriceTabel key={item.id} cartItem={item} />
                     ))}
 
                 {cartTotal > 0 && (
                     <>
                         <hr />
-
-                        <div className="flex justify-between pt-2 ">
-                            <span>Total:</span> <span>${cartTotal}</span>
+                        <div className="flex pt-2 justify-around text-lg ">
+                            <span>Total:</span>{" "}
+                            <span className="">${cartTotal}</span>
                         </div>
                     </>
                 )}
