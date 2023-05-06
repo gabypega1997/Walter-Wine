@@ -31,25 +31,12 @@ const CartCheckout = () => {
                 )}
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
-                        // <div key={item.id} className="overflow-scroll ">
-                        //     <div
-                        //         key={item.id}
-                        //         className="flex py-3 px-5 m-5 overflow-scroll bg-yellow h-56 flex-col rounded-3xl min-w-fit"
-                        //     >
-                        //         <Image
-                        //             src="/wine1.png"
-                        //             width={80}
-                        //             height={30}
-                        //             alt="fsa"
-                        //         ></Image>
-                        //     </div>
-                        // </div>
                         <CartCard cartItem={item} key={item.id} />
                     ))}
             </div>
 
             {/*   Price compoentn   */}
-            <div className="p-4 w-4/5 font-semibold">
+            <div className="p-6  font-semibold">
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
                         <div key={item.id} className="">
@@ -59,21 +46,25 @@ const CartCheckout = () => {
                                     {":"}
                                 </div>
                                 <div className="w-1/5">
-                                    {"x"}
+                                    {item.price}${" x "}
                                     {item.quantity}
                                 </div>
-                                <div className="w-1/5 text-end">
+                                <div className="w-1/5 pl-4">
                                     {" $"}
-                                    {item.price}{" "}
+                                    {item.price * item.quantity!}{" "}
                                 </div>
                             </div>
                         </div>
                     ))}
+
                 {cartTotal > 0 && (
-                    <div className="flex justify-between pt-2 ">
+                    <>
                         <hr />
-                        <span>Total:</span> <span>${cartTotal}</span>
-                    </div>
+
+                        <div className="flex justify-between pt-2 ">
+                            <span>Total:</span> <span>${cartTotal}</span>
+                        </div>
+                    </>
                 )}
             </div>
 
