@@ -5,7 +5,6 @@ const Index: FC = () => {
 
     return (
         <>
-            Shop
             <ProductsList />
         </>
     );

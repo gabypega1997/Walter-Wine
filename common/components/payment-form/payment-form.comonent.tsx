@@ -92,7 +92,7 @@ const PaymentForm = () => {
                     />
                 </div>
                 <CardElement className="p-5 text-2xl w-full" />
-                <div className="flex flex-col">
+                <div className="flex flex-col pt-5 pb-8">
                     <Checkbox checkboxFor="conditions">
                         I agree to terms & conditions
                     </Checkbox>
@@ -100,28 +100,12 @@ const PaymentForm = () => {
                     <Checkbox checkboxFor="newsletter">
                         Sign up to our newsletter
                     </Checkbox>
-                    {/* <div>
-                        <input
-                            type="checkbox"
-                            id="conditions"
-                            name="conditions"
-                        />
-                        <label htmlFor="conditions"></label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="newsletter"
-                            name="newsletter"
-                        />
-                        <label htmlFor="newsletter">
-                            Sign up to our newsletter
-                        </label>
-                    </div> */}
                 </div>
-                <Button type="purchase">
-                    {isProcessingPayment ? <Spinner /> : "Pay now"}
-                </Button>
+                <div className="pb-16">
+                    <Button type="purchase">
+                        {isProcessingPayment ? <Spinner /> : "Pay now"}
+                    </Button>
+                </div>
             </form>
         </div>
     );

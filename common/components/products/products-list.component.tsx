@@ -5,7 +5,7 @@ const ProductsList = () => {
     const [{ isLoading, fetchedWines, error }] = useGetWine();
 
     return (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap bg-gray-dark py-7 px-2 gap-2">
             {isLoading ? (
                 <>Loading...</>
             ) : (
