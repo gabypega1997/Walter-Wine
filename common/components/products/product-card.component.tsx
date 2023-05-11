@@ -6,22 +6,12 @@ import Image from "next/image";
 import { addItemToCart } from "@/common/store/cart/cart.reducer";
 
 import StarsRating from "./stars-rating.component";
+import ProductButton from "./product-button.component";
+import { threeDiferiteElements } from "@/common/utils/functions/general.functions";
 
 type ProductCardProps = {
     item: Wine;
     index: number;
-};
-
-type ProductButton = {
-    children: ReactNode;
-};
-
-const ProductButton: FC<ProductButton> = ({ children }) => {
-    return (
-        <button className=" text-white rounded-sm h-9 w-9 bg-gray-light">
-            {children}
-        </button>
-    );
 };
 
 const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
@@ -30,6 +20,7 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
     const handleAddProductToCart = () => {
         dispatch(addItemToCart(item));
     };
+
     return (
         <div
             className={`" flex h-56 max-w-sm m-1 my-2 bg-gray-light even:flex-row-reverse  "`}
@@ -37,20 +28,31 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
             <div className="flex justify-center w-2/5">
                 <div className="flex flex-col justify-end h-full bg-yellow-200 w-28">
                     <div className="flex items-end justify-center h-12 gap-3 bg-yellow-400">
-                        <button className="z-20 text-white rounded-sm h-9 w-9 bg-gray-light">
-                            <Image src="/images/shop/share.png" height={20} width={30} alt="share"/>
-                        </button>
-
-                        <button
-                            onClick={handleAddProductToCart}
-                            className="z-20 text-white rounded-sm h-9 w-9 bg-gray-light"
-                        >
-                            <Image src="/images/shop/cart.png" height={30} width={25} alt="share"/>
-                        </button>
+                        <ProductButton>
+                            <Image
+                                src="/images/shop/share.png"
+                                height={20}
+                                width={40}
+                                alt="share"
+                            />
+                        </ProductButton>
+                        <ProductButton handler={handleAddProductToCart}>
+                            <Image
+                                src="/images/shop/cart.png"
+                                height={30}
+                                width={30}
+                                alt="share"
+                            />
+                        </ProductButton>
 
                         <Image
-                            className="absolute bg-yellow"
-                            src="/images/shop/WineYellow.png"
+                            className="absolute"
+                            src={`/images/shop/${threeDiferiteElements(
+                                index,
+                                "WineYellow.png",
+                                "WineRed.png",
+                                "WineBrown.png"
+                            )}`}
                             width={118}
                             height={200}
                             alt={item.title}
@@ -61,18 +63,17 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
 
             <div className="w-3/5 mr-2 text-center">
                 <h1
-                    className={`"py-3 text-2xl font-bold "${
-                        (index + 1) % 3 === 0
-                            ? " text-[#4A3328] "
-                            : (index + 1) % 3 === 2
-                            ? " text-brown "
-                            : " text-yellow "
-                    }`}
+                    className={`" py-2 text-2xl font-bold "${threeDiferiteElements(
+                        index,
+                        " text-yellow ",
+                        " text-brown ",
+                        " text-[#4A3328] "
+                    )}`}
                 >
                     {item.title}
                 </h1>
 
-                <p className="text-md leading-5 text-white text-start h-36">
+                <p className="text-md leading-5 text-white text-start h-36 mx-3">
                     {item.description}
                 </p>
 
@@ -83,5 +84,7 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
         </div>
     );
 };
+// " text-[#4A3328] "
 
+// threeDiferiteElements(index,"WineYellow.png","WineRed.png","WineBrown.png")
 export default ProductCart;
