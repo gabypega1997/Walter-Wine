@@ -38,20 +38,20 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
                 <div className="flex flex-col justify-end h-full bg-yellow-200 w-28">
                     <div className="flex items-end justify-center h-12 gap-3 bg-yellow-400">
                         <button className="z-20 text-white rounded-sm h-9 w-9 bg-gray-light">
-                            Sh
+                            <Image src="/images/shop/share.png" height={20} width={30} alt="share"/>
                         </button>
 
                         <button
                             onClick={handleAddProductToCart}
                             className="z-20 text-white rounded-sm h-9 w-9 bg-gray-light"
                         >
-                            Buy
+                            <Image src="/images/shop/cart.png" height={30} width={25} alt="share"/>
                         </button>
 
                         <Image
                             className="absolute bg-yellow"
-                            src="/wine1.png"
-                            width={105}
+                            src="/images/shop/WineYellow.png"
+                            width={118}
                             height={200}
                             alt={item.title}
                         />
@@ -66,7 +66,7 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
                             ? " text-[#4A3328] "
                             : (index + 1) % 3 === 2
                             ? " text-brown "
-                            :  " text-yellow "
+                            : " text-yellow "
                     }`}
                 >
                     {item.title}
