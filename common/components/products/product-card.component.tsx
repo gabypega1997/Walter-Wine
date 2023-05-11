@@ -1,17 +1,15 @@
-import { FC, ReactNode, use } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { FC, ReactNode } from "react";
+import { useDispatch } from "react-redux";
 
 import { Wine } from "@/common/types/wine.types";
 import Image from "next/image";
 import { addItemToCart } from "@/common/store/cart/cart.reducer";
-import {
-    selectCartCount,
-    selectCartItems,
-} from "@/common/store/cart/cart.selector";
+
 import StarsRating from "./stars-rating.component";
 
 type ProductCardProps = {
     item: Wine;
+    index: number;
 };
 
 type ProductButton = {
@@ -20,30 +18,32 @@ type ProductButton = {
 
 const ProductButton: FC<ProductButton> = ({ children }) => {
     return (
-        <button className=" text-white rounded-sm h-9 w-9 bg-slate-500">
+        <button className=" text-white rounded-sm h-9 w-9 bg-gray-light">
             {children}
         </button>
     );
 };
 
-const ProductCart: FC<ProductCardProps> = ({ item }) => {
+const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
     const dispatch = useDispatch();
 
     const handleAddProductToCart = () => {
         dispatch(addItemToCart(item));
     };
     return (
-        <div className="flex h-56 max-w-sm m-2 bg-gray-light">
+        <div
+            className={`" flex h-56 max-w-sm m-1 my-2 bg-gray-light even:flex-row-reverse  "`}
+        >
             <div className="flex justify-center w-2/5">
                 <div className="flex flex-col justify-end h-full bg-yellow-200 w-28">
                     <div className="flex items-end justify-center h-12 gap-3 bg-yellow-400">
-                        <button className="z-20 text-white rounded-sm h-9 w-9 bg-slate-500">
+                        <button className="z-20 text-white rounded-sm h-9 w-9 bg-gray-light">
                             Sh
                         </button>
 
                         <button
                             onClick={handleAddProductToCart}
-                            className="z-20 text-white rounded-sm h-9 w-9 bg-slate-500"
+                            className="z-20 text-white rounded-sm h-9 w-9 bg-gray-light"
                         >
                             Buy
                         </button>
@@ -60,13 +60,23 @@ const ProductCart: FC<ProductCardProps> = ({ item }) => {
             </div>
 
             <div className="w-3/5 mr-2 text-center">
-                <h1 className="p-2 text-2xl font-bold text-yellow-200">
+                <h1
+                    className={`"py-3 text-2xl font-bold "${
+                        (index + 1) % 3 === 0
+                            ? " text-[#4A3328] "
+                            : (index + 1) % 3 === 2
+                            ? " text-brown "
+                            :  " text-yellow "
+                    }`}
+                >
                     {item.title}
                 </h1>
-                <h3 className="text-lg leading-5 text-white text-start">
+
+                <p className="text-md leading-5 text-white text-start h-36">
                     {item.description}
-                </h3>
-                <div className="w-20 h-5 m-3 ml-auto bg-yellow-300">
+                </p>
+
+                <div className="ml-auto w-20">
                     <StarsRating rating={item.rating} />
                 </div>
             </div>
