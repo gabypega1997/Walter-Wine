@@ -4,10 +4,15 @@ type ButtonProps = {
     children: ReactNode;
     type: "buy" | "read" | "purchase" | "sign-in" | "google" | "continue";
     isPoligon?: boolean;
-    onClickFunc: () => void;
+    onClickFunc?: () => void;
 };
 
-const Button: FC<ButtonProps> = ({ type, children, isPoligon, onClickFunc }) => {
+const Button: FC<ButtonProps> = ({
+    type,
+    children,
+    isPoligon,
+    onClickFunc,
+}) => {
     const polygonShapeStyle = {
         clipPath:
             "polygon(100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%,0% 0%)",
@@ -20,7 +25,7 @@ const Button: FC<ButtonProps> = ({ type, children, isPoligon, onClickFunc }) => 
     const mediumButton = " h-14 w-32 rounded-lg ";
 
     // purchase
-    const largeButton = "  h-16 w-36 rounded-lg text-xl ";
+    const largeButton = "  h-20 w-44 rounded-lg text-2xl ";
 
     const buttonStyle = (): string => {
         switch (type) {
@@ -29,7 +34,7 @@ const Button: FC<ButtonProps> = ({ type, children, isPoligon, onClickFunc }) => 
             case "read":
                 return `${mediumButton}" bg-yellow "`;
             case "purchase":
-                return `${largeButton}" bg-brown text-white"`;
+                return `${largeButton}" bg-brown  text-white "`;
             case "google":
                 return `${smallButton}" bg-yellow "`;
             case "sign-in":
@@ -43,7 +48,7 @@ const Button: FC<ButtonProps> = ({ type, children, isPoligon, onClickFunc }) => 
 
     return (
         <button
-            className={`${buttonStyle()} font-medium drop-shadow-lg`}
+            className={`${buttonStyle()} font-medium drop-shadow-lg `}
             style={isPoligon ? polygonShapeStyle : {}}
             onClick={onClickFunc}
         >

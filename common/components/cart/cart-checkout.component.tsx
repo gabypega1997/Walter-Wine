@@ -4,10 +4,12 @@ import {
     selectCartItems,
     selectCartTotal,
 } from "@/common/store/cart/cart.selector";
-import { CartItem, Wine } from "@/common/types/wine.types";
-import Image from "next/image";
+import { CartItem} from "@/common/types/wine.types";
 import { selectUser } from "@/common/store/user/user.selector";
 import Payment from "../payment-form";
+import Link from "next/link";
+import CartCard from "./cart-card.component";
+import PriceTabel from "./price-tabel.component";
 
 const CartCheckout = () => {
     const cartItems = useSelector(selectCartItems);
@@ -15,51 +17,53 @@ const CartCheckout = () => {
     const currentUser = useSelector(selectUser);
 
     return (
-        <div>
+        <div className="min-h-screen">
             {/* Images component */}
 
-            <h1 className="p-3 text-2xl font-bold text-center text-white bg-slate-400">
+            <h1 className="p-3 text-2xl font-bold text-center text-white bg-gray-dark">
                 Checkout
             </h1>
-            <div className="rounded-br-[250px] h-96 bg-slate-400 flex max-w-full overflow-scroll">
+            <div className="rounded-br-[250px] h-96 bg-gray-dark flex max-w-full overflow-scroll drop-shadow-2xl">
+                {!cartItems.length && (
+                    <div className="text-white text-xl p-5">
+                        Your cart is empty
+                    </div>
+                )}
                 {cartItems &&
-                    cartItems.map((item: Wine) => (
-                        <div
-                            key={item.id}
-                            className="flex p-5 m-5 overflow-scroll bg-yellow-200 h-52 rounded-3xl min-w-fit"
-                        >
-                            <Image
-                                src="/wine1.png"
-                                width={80}
-                                height={30}
-                                alt="fsa"
-                            ></Image>
-                        </div>
+                    cartItems.map((item: CartItem) => (
+                        <CartCard cartItem={item} key={item.id} />
                     ))}
             </div>
 
             {/*   Price compoentn   */}
-            <div>
+            <div className="p-6  font-semibold">
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
-                        <div key={item.id}>
-                            <div>
-                                {item.title}
-                                {": x"}
-                                {item.quantity}
-                                {" $"}
-                                {item.price}{" "}
-                            </div>
-                        </div>
+                        <PriceTabel key={item.id} cartItem={item} />
                     ))}
-                <p>Total: {cartTotal}$</p>
+
+                {cartTotal > 0 && (
+                    <>
+                        <hr />
+                        <div className="flex pt-2 justify-around text-lg ">
+                            <span>Total:</span>{" "}
+                            <span className="">${cartTotal}</span>
+                        </div>
+                    </>
+                )}
             </div>
 
             {/* LogIn Component */}
             {currentUser ? (
                 <Payment />
             ) : (
-                <div>Please LogIn to continue with your order</div>
+                <div className="text-lg p-16">
+                    You need to be{" "}
+                    <Link href="auth" className="text-wine font-bold">
+                        registred
+                    </Link>{" "}
+                    to use Payments
+                </div>
             )}
         </div>
     );

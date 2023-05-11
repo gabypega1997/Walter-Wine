@@ -5,13 +5,13 @@ const ProductsList = () => {
     const [{ isLoading, fetchedWines, error }] = useGetWine();
 
     return (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap bg-gray-dark py-7 px-2">
             {isLoading ? (
                 <>Loading...</>
             ) : (
                 fetchedWines &&
-                fetchedWines.map((wine) => (
-                    <ProductCart key={wine.id!} item={wine} />
+                fetchedWines.map((wine,index) => (
+                    <ProductCart key={wine.id!} index={index} item={wine} />
                 ))
             )}
         </div>

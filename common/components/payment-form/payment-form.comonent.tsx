@@ -11,6 +11,9 @@ import { selectUser } from "../../store/user/user.selector";
 import Spinner from "../spinner";
 import { updateOrderForUser } from "@/common/utils/firebase/firestore.functions";
 import { clearCart } from "@/common/store/cart/cart.reducer";
+import Button from "../button/button.component";
+import Image from "next/image";
+import Checkbox from "./checkbox.component";
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -55,15 +58,6 @@ const PaymentForm = () => {
             if (paymentResult.paymentIntent.status === "succeeded") {
                 updateOrderForUser(currentUser, cartItems);
 
-                // ******************* Store orders to redux *************
-
-                // dispatch(
-                //     setUser({
-                //         ...currentUser,
-                //         orders: [...currentUser.orders, cartItems],
-                //     })
-                // );
-
                 router.push("/confirmation");
                 dispatch(clearCart());
             }
@@ -72,10 +66,46 @@ const PaymentForm = () => {
 
     return (
         <div>
-            <form onSubmit={paymentHandler}>
+            <form
+                onSubmit={paymentHandler}
+                className="flex flex-col items-center"
+            >
                 <h2>Credit Card Payment: </h2>
-                <CardElement />
-                {isProcessingPayment ? <Spinner /> : <button>Pay now</button>}
+                <div className="flex gap-7 py-4">
+                    <Image
+                        src="/images/cart/visa.png"
+                        width={40}
+                        height={80}
+                        alt="visa"
+                    />
+                    <Image
+                        src="/images/cart/maestro.png"
+                        width={50}
+                        height={80}
+                        alt="visa"
+                    />
+                    <Image
+                        src="/images/cart/mastercard.png"
+                        width={40}
+                        height={80}
+                        alt="visa"
+                    />
+                </div>
+                <CardElement className="p-5 text-2xl w-full" />
+                <div className="flex flex-col pt-5 pb-8">
+                    <Checkbox checkboxFor="conditions">
+                        I agree to terms & conditions
+                    </Checkbox>
+
+                    <Checkbox checkboxFor="newsletter">
+                        Sign up to our newsletter
+                    </Checkbox>
+                </div>
+                <div className="pb-16">
+                    <Button type="purchase">
+                        {isProcessingPayment ? <Spinner /> : "Pay now"}
+                    </Button>
+                </div>
             </form>
         </div>
     );

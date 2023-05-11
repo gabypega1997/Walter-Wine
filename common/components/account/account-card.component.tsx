@@ -30,7 +30,7 @@ const AccountCard = () => {
                 Account Settings
             </NavigationButtonAccount>
 
-            <SignOut />
+            <SignOut buttonStyle="" />
         </div>
     );
 };
