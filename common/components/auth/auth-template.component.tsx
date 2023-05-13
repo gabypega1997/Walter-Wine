@@ -11,7 +11,7 @@ const AuthTemplate = () => {
         <div className="">
             {signUpOrSignIn === "signIn" ? (
                 <div className="text-center my-10 text-white">
-                    <h2 className="text-xl font-bold">
+                    <h2 className="text-xl font-semibold">
                         I alredy have an account{" "}
                     </h2>
                     <p className="opacity-70 italic">
@@ -28,7 +28,7 @@ const AuthTemplate = () => {
                 </div>
             ) : (
                 <div className="text-center my-10 text-white">
-                    <h2 className="text-xl font-bold">
+                    <h2 className="text-xl font-semibold">
                         Don&apos;t have an acoount ?{" "}
                     </h2>
                     <p className="opacity-70 italic">

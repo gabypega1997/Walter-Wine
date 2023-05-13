@@ -1,17 +1,17 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode,ButtonHTMLAttributes } from "react";
 
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
+   {
     children: ReactNode;
-    type: "buy" | "read" | "purchase" | "sign-in" | "google" | "continue";
+    shape: "buy" | "read" | "purchase" | "sign-in" | "google" | "continue";
     isPoligon?: boolean;
-    onClickFunc?: () => void;
 };
 
 const Button: FC<ButtonProps> = ({
-    type,
+    shape,
     children,
     isPoligon,
-    onClickFunc,
+    ...otherProps
 }) => {
     const polygonShapeStyle = {
         clipPath:
@@ -19,7 +19,7 @@ const Button: FC<ButtonProps> = ({
     };
 
     // sign-in google
-    const smallButton = " h-10 w-32 rounded-lg ";
+    const smallButton = " h-10 w-32 rounded-lg text-gray-dark ";
 
     // buy read continue
     const mediumButton = " h-14 w-32 rounded-lg ";
@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({
     const largeButton = "  h-20 w-44 rounded-lg text-2xl ";
 
     const buttonStyle = (): string => {
-        switch (type) {
+        switch (shape) {
             case "buy":
                 return `${mediumButton}" bg-brown "`;
             case "read":
@@ -36,7 +36,7 @@ const Button: FC<ButtonProps> = ({
             case "purchase":
                 return `${largeButton}" bg-brown  text-white "`;
             case "google":
-                return `${smallButton}" bg-yellow "`;
+                return `${smallButton}" bg-yellow 	 "`;
             case "sign-in":
                 return `${smallButton}" bg-brown "`;
             case "continue":
@@ -48,9 +48,9 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            className={`${buttonStyle()} font-medium drop-shadow-lg `}
+            className={`${buttonStyle()} font-semibold drop-shadow-lg `}
             style={isPoligon ? polygonShapeStyle : {}}
-            onClick={onClickFunc}
+            {...otherProps}
         >
             {children}
         </button>

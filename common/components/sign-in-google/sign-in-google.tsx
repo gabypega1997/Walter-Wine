@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import { setUser } from "@/common/store/user/user.store";
 import { signInWithGoogle } from "@/common/utils/firebase/authentication.function";
+import Button from "../button/button.component";
 
 const SignInGoogle = () => {
     const dispatch = useDispatch();
@@ -10,18 +11,20 @@ const SignInGoogle = () => {
 
     const handlerSignInGoogle = async () => {
         const user = await signInWithGoogle();
-        
+
         dispatch(setUser(user));
         router.push("/shop");
     };
     return (
-        <button
-            className="bg-blue-600"
+        <Button
             type="button"
             onClick={handlerSignInGoogle}
+            shape="google"
+            isPoligon
         >
-            Sign In With Google
-        </button>
+            <p className="-mb-1.5">Google</p>
+            <p> Sign In</p>
+        </Button>
     );
 };
 
