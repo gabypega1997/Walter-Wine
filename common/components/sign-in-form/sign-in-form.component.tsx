@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
 import SignInGoogle from "../sign-in-google";
-import { takeUserDocumentFromAuth } from "@/common/utils/firebase/authentication.function";
-import { User } from "firebase/auth";
+
 import Input from "../input/input.component";
 import Button from "../button/button.component";
 

@@ -8,7 +8,7 @@ const AuthTemplate = () => {
     );
 
     return (
-        <div className="">
+        <div className="transition ">
             {signUpOrSignIn === "signIn" ? (
                 <div className="text-center my-10 text-white">
                     <h2 className="text-xl font-semibold">

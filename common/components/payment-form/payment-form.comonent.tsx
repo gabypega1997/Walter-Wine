@@ -102,7 +102,7 @@ const PaymentForm = () => {
                     </Checkbox>
                 </div>
                 <div className="pb-16">
-                    <Button type="purchase">
+                    <Button shape="purchase">
                         {isProcessingPayment ? <Spinner /> : "Pay now"}
                     </Button>
                 </div>
