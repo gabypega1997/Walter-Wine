@@ -1,16 +1,17 @@
-import { FC, ReactNode,ButtonHTMLAttributes } from "react";
+import { FC, ReactNode, ButtonHTMLAttributes } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
-   {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     shape: "buy" | "read" | "purchase" | "sign-in" | "google" | "continue";
     isPoligon?: boolean;
-};
+    otherClasses?: string;
+}
 
 const Button: FC<ButtonProps> = ({
     shape,
     children,
     isPoligon,
+    otherClasses,
     ...otherProps
 }) => {
     const polygonShapeStyle = {
@@ -48,7 +49,7 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            className={`${buttonStyle()} font-semibold drop-shadow-lg `}
+            className={`${buttonStyle()} font-semibold drop-shadow-lg ${otherClasses} `}
             style={isPoligon ? polygonShapeStyle : {}}
             {...otherProps}
         >
