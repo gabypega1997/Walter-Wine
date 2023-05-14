@@ -8,24 +8,29 @@ const AccountCard = () => {
     const user = useSelector(selectUser);
 
     return (
-        <div className="flex flex-col justify-center items-center gap-5">
-            <h1 className="text-2xl font-medium">My Account</h1>
+        <div className="flex flex-col justify-center items-center gap-5 bg-gray-light w-5/6 mx-auto shadow-2xl">
+            <h1 className="text-xl font-semibold pt-5 text-white">
+                My Account
+            </h1>
             {user && <ProfilImage user={user} />}
 
             <NavigationButtonAccount
                 link="/account/my-orders"
-                imageUrl="/defaultProfil.jpg"
+                imageUrl="/images/account/orders.png"
             >
                 My Orders
             </NavigationButtonAccount>
 
-            <NavigationButtonAccount link="/cart" imageUrl="/defaultProfil.jpg">
+            <NavigationButtonAccount
+                link="/cart"
+                imageUrl="/images/account/cartAccount.png"
+            >
                 My Cart
             </NavigationButtonAccount>
 
             <NavigationButtonAccount
                 link="/account/account-settings"
-                imageUrl="/defaultProfil.jpg"
+                imageUrl="/images/account/settings.png"
             >
                 Account Settings
             </NavigationButtonAccount>

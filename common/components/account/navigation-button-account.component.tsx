@@ -12,10 +12,10 @@ const NavigationButtonAccount: FC<NavbarButtonProps> = ({ children, link,imageUr
     return (
         <Link
             href={link}
-            className="h-14 bg-slate-400 w-48 flex justify-between px-2 items-center text-white font-medium"
+            className="h-14 bg-gray-dark w-4/5 flex justify-between px-2 items-center text-white font-medium shadow-md"
         >
             {children}
-            <Image src={imageUrl} width={50} height={50} alt={`icon ${link}`}/>
+            <Image src={imageUrl} width={35} height={35} alt={`icon ${link}`}/>
         </Link>
     );
 };
