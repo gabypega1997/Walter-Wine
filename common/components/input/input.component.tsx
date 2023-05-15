@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, InputHTMLAttributes } from "react";
 
-type InputProps = {
-    otherClasses: string;
-};
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    otherClasses?: string;
+}
 
 const Input: FC<InputProps> = ({ otherClasses, ...otherProps }) => {
     return (
