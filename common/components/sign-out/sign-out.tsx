@@ -2,12 +2,12 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
 import { setUser } from "@/common/store/user/user.store";
-import { FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 
-type SignOutProps = {
+interface SignOutProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     buttonStyle?: string;
-};
-const SignOut: FC<SignOutProps> = ({ buttonStyle }) => {
+}
+const SignOut: FC<SignOutProps> = ({ buttonStyle, ...otherProps }) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -23,7 +23,7 @@ const SignOut: FC<SignOutProps> = ({ buttonStyle }) => {
     };
 
     return (
-        <button className={buttonStyle} onClick={handlerSignOut}>
+        <button onClick={handlerSignOut} {...otherProps}>
             Sign Out
         </button>
     );

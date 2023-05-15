@@ -16,7 +16,7 @@ export const ProfilImage: FC<ProfilImage> = ({ user }) => {
                 alt={"Profil Image"}
                 src={user && user.photoURL}
             ></Image>
-            <h3 className="text-yellow italic text-lg -mt-4">{user && user.displayName}</h3>
+            <h3 className="text-yellow italic text-lg -mt-4 mb-10">{user && user.displayName}</h3>
         </>
     );
 };

@@ -31,17 +31,17 @@ const Button: FC<ButtonProps> = ({
     const buttonStyle = (): string => {
         switch (shape) {
             case "buy":
-                return `${mediumButton}" bg-brown "`;
+                return ` ${mediumButton}" bg-brown "`;
             case "read":
-                return `${mediumButton}" bg-yellow "`;
+                return ` ${mediumButton}" bg-yellow "`;
             case "purchase":
-                return `${largeButton}" bg-brown  text-white "`;
+                return ` ${largeButton}" bg-brown  text-white "`;
             case "google":
-                return `${smallButton}" bg-yellow 	 "`;
+                return ` ${smallButton}" bg-yellow 	 "`;
             case "sign-in":
-                return `${smallButton}" bg-brown "`;
+                return ` ${smallButton}" bg-brown "`;
             case "continue":
-                return `${largeButton}" bg-green-200"`;
+                return ` ${largeButton}" bg-green-200 "`;
             default:
                 return " ";
         }

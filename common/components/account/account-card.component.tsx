@@ -35,7 +35,13 @@ const AccountCard = () => {
                 Account Settings
             </NavigationButtonAccount>
 
-            <SignOut buttonStyle="" />
+            <SignOut
+                className="h-10 w-32 rounded-lg text-gray-dark bg-yellow font-semibold mt-8 mb-20"
+                style={{
+                    clipPath:
+                        "polygon(100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%,0% 0%)",
+                }}
+            />
         </div>
     );
 };

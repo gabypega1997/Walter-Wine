@@ -32,7 +32,7 @@ const NavbarOptions: FC<NabarOptionsProps> = ({ isBurgerMenu }) => {
             {user ? (
                 <>
                     <NavbarButton link="/account">My Account</NavbarButton>
-                    <SignOut buttonStyle={styleSignOutButton} />
+                    <SignOut className={styleSignOutButton} />
                 </>
             ) : (
                 <NavbarButton link="/auth">Authentication</NavbarButton>
