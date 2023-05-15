@@ -27,17 +27,13 @@ const ReviewAndButtons = () => {
                 </div>
             </div>
 
-            {/* Buttons */}
             <div className="flex flex-col gap-5 my-12 items-end mr-12 ">
-                <Button
-                    onClickFunc={() => redirectionHandler("/shop")}
-                    type="buy"
-                >
+                <Button onClick={() => redirectionHandler("/shop")} shape="buy">
                     Buy Now
                 </Button>
                 <Button
-                    onClickFunc={() => redirectionHandler("/about")}
-                    type="read"
+                    onClick={() => redirectionHandler("/about")}
+                    shape="read"
                 >
                     Read More
                 </Button>

@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/common/store/user/user.store";
 import SignInGoogle from "../sign-in-google";
-import { takeUserDocumentFromAuth } from "@/common/utils/firebase/authentication.function";
-import { User } from "firebase/auth";
+
+import Input from "../input/input.component";
+import Button from "../button/button.component";
 
 const InitialSignInData: SignInData = {
     email: "",
@@ -50,28 +51,31 @@ const SignInForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input
+            <Input
                 type="email"
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Email"
                 required
             />
             <br />
-            <label htmlFor="password">Password:</label>
-            <input
-            autoComplete="currentPassword"
+            <Input
+                autoComplete="currentPassword"
                 type="password"
                 id="password"
                 value={formData.password}
                 onChange={handleChange}
+                placeholder="Password"
                 required
             />
             <br />
-            <button type="submit">Sign In</button>
-            <br></br>
-            <SignInGoogle />
+            <div className="flex justify-center gap-1 pt-5 pb-8">
+                <Button type="submit" shape="sign-in" isPoligon>
+                    Sign In
+                </Button>
+                <SignInGoogle />
+            </div>
         </form>
     );
 };

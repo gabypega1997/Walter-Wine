@@ -1,14 +1,7 @@
-import SignInForm from "@/common/components/sign-in-form";
-import SignUpForm from "@/common/components/sign-up-form";
+import Authentication from "@/common/components/auth";
 
 const Index = () => {
-
-    return (
-        <div className="flex">
-            <SignUpForm />
-            <SignInForm />
-        </div>
-    );
+    return <Authentication />;
 };
 
 export default Index;

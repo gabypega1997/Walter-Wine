@@ -5,6 +5,8 @@ import { useState, FormEvent } from "react";
 import { setUser } from "@/common/store/user/user.store";
 
 import { SignupFormData } from "@/common/types/user.types";
+import Input from "../input/input.component";
+import Button from "../button/button.component";
 
 const InitilaSingnUpData: SignupFormData = {
     displayName: "",
@@ -56,8 +58,8 @@ const SignUpForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="displayName">Name:</label>
-            <input
+            <Input
+                placeholder="Display Name"
                 type="text"
                 id="displayName"
                 value={formData.displayName}
@@ -65,8 +67,8 @@ const SignUpForm = () => {
                 required
             />
             <br />
-            <label htmlFor="email">Email:</label>
-            <input
+            <Input
+                placeholder="Email"
                 type="email"
                 id="email"
                 value={formData.email}
@@ -74,8 +76,8 @@ const SignUpForm = () => {
                 required
             />
             <br />
-            <label htmlFor="password">Password:</label>
-            <input
+            <Input
+                placeholder="Password"
                 autoComplete="newPassword"
                 type="password"
                 id="password"
@@ -84,8 +86,8 @@ const SignUpForm = () => {
                 required
             />
             <br />
-            <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input
+            <Input
+                placeholder="Confirm Password"
                 autoComplete="newPassword"
                 type="password"
                 id="confirmPassword"
@@ -94,7 +96,11 @@ const SignUpForm = () => {
                 required
             />
             <br />
-            <button type="submit">Sign Up</button>
+            <div className="pt-4 pb-8">
+                <Button type="submit" shape="sign-in" isPoligon>
+                    Sign Up
+                </Button>
+            </div>
         </form>
     );
 };
