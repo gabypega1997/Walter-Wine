@@ -37,8 +37,9 @@ export const UploadProfilImage: FC<UploadProfilImage> = ({ user }) => {
     }
 
     return (
-        <>
-            <input type="file" onChange={handleFileUpload} />
-        </>
+        <div className="bg-gray-dark w-28 h-8 overflow-hidden ">
+            <p className="absolute">Change Image</p>
+            <input type="file" onChange={handleFileUpload} className="opacity-0" />
+        </div>
     );
 };
