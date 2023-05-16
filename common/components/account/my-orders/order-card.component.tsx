@@ -12,7 +12,7 @@ const OrderCard: FC<OrderCardType> = ({ items, index }) => {
         return acc + item.quantity! * item.price;
     }, 0);
     return (
-        <div className="bg-gray-dark w-11/12 m-auto p-5">
+        <div className="bg-gray-dark w-11/12 m-auto p-5 my-5 ">
             <h2 className="pl-10 text-lg font-semibold">
                 Order {numberOfOrder}
             </h2>

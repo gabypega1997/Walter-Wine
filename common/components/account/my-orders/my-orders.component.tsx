@@ -20,8 +20,10 @@ const MyOrders = () => {
 
     return (
         <AccountLayout>
-            <div className="w-5/6 mx-auto bg-gray-light shadow-2xl text-white">
-                <h1 className="text-center py-5 text-xl font-semibold">My Orders</h1>
+            <div className="w-5/6 mx-auto bg-gray-light shadow-2xl text-white pb-5">
+                <h1 className="text-center py-5 text-xl font-semibold">
+                    My Orders
+                </h1>
                 {orders &&
                     orders.map((order, index) => (
                         <div key={index}>
@@ -30,7 +32,6 @@ const MyOrders = () => {
                                 items={order.items}
                                 index={index}
                             />
-                            <p>Created at: {order.createdAt}</p>
                         </div>
                     ))}
             </div>
