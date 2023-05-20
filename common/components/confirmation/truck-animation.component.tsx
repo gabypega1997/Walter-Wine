@@ -1,5 +1,9 @@
+import ConfirmationCircle from "../confirmation-circle/confirmation-circle.component";
+
 const TruckAnimation = () => {
-    return <>Truck Animation</>;
+    return <>Truck Animation 
+    <ConfirmationCircle/>
+    </>;
 };
 
 

@@ -6,6 +6,7 @@ const ConfirmationOrder = () => {
         <>
             <ConfirmationMessage />
             <TruckAnimation />
+            
         </>
     );
 };
