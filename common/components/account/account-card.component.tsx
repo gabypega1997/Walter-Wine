@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import SignOut from "../sign-out";
 import NavigationButtonAccount from "./navigation-button-account.component";
 import { ProfilImage } from "./profil-image.component";
+import PreviousPageButton from "../previous-button/previous-page-button.component";
 
 const AccountCard = () => {
     const user = useSelector(selectUser);
 
     return (
-        <div className="flex flex-col justify-center items-center gap-5 bg-gray-light w-5/6 mx-auto shadow-2xl">
+        <div className="flex flex-col justify-center items-center gap-5 bg-gray-light w-5/6 mx-auto shadow-2xl relative">
+            <PreviousPageButton className="absolute top-3 right-3" />
             <h1 className="text-xl font-semibold pt-5 text-white">
                 My Account
             </h1>

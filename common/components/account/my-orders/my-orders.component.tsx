@@ -23,14 +23,13 @@ const MyOrders = () => {
 
     return (
         <AccountLayout>
-            <div className="w-5/6 mx-auto bg-gray-light shadow-2xl text-white pb-5">
+            <div className="w-5/6 mx-auto bg-gray-light shadow-2xl text-white pb-5 relative">
                 <div className="pb-5">
                     <h1 className="text-center py-5 text-xl font-semibold">
                         My Orders
                     </h1>
-
-                    <PreviousPageButton className=" ml-auto -mt-14 mr-4 " />
                 </div>
+                <PreviousPageButton className="absolute top-3 right-3" />
 
                 {orders &&
                     orders.map((order, index) => (

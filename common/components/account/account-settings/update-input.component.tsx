@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { UserType } from "@/common/types/user.types";
 import { setUser } from "@/common/store/user/user.store";
+import Input from "../../input/input.component";
+import Image from "next/image";
 
 type UpdateInputProps = {
     user: UserType;
@@ -46,19 +48,24 @@ const UpdateInput: FC<UpdateInputProps> = ({ user, type }) => {
     };
 
     return (
-        <div className="m-6">
-            <label htmlFor={type} className="capitalize">
+        <div className=" text-start px-3">
+            <label htmlFor={type} className="capitalize text-lg ml-2">
                 {type}
             </label>
-            <div className="bg-slate-300">
-                <input
+            
+            <div className="-mt-4 flex items-center">
+                <Input
                     type={type === "name" ? "text" : type}
                     value={inputValue}
                     onChange={handleChange}
                 />
-                <button type="button" onClick={handlerUpdates}>
-                    <div>Icon</div>
-                </button>
+                <Image
+                    src="/images/account/settings.png"
+                    width={20}
+                    height={20}
+                    alt="settings"
+                    className="h-10 w-10 hover:rotate-90 hover:drop-shadow-2xl mx-2"
+                />
             </div>
         </div>
     );

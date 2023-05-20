@@ -7,7 +7,7 @@ type ProfilImage = {
 };
 export const ProfilImage: FC<ProfilImage> = ({ user }) => {
     return (
-        <>
+        <div>
             <Image
                 className="w-[100px] h-[100px]  rounded-full border-2 p-1.5 m-auto"
                 width={200}
@@ -15,11 +15,12 @@ export const ProfilImage: FC<ProfilImage> = ({ user }) => {
                 alt={"Profil Image"}
                 src={user && user.photoURL}
             ></Image>
+
             {/* this -mt-4 is for a gap-5 from flex
              */}
-            <h3 className="text-yellow italic text-lg -mt-4 mb-10">
+            <h3 className="text-yellow italic text-lg text-center m-3">
                 {user && user.displayName}
             </h3>
-        </>
+        </div>
     );
 };
