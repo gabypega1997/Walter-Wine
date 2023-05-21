@@ -1,9 +1,10 @@
 import AccountCard from "./account-card.component";
+import AccountLayout from "./account-layout.component";
 const Account = () => {
     return (
-        <div className="bg-gray-dark py-16 min-h-screen">
+        <AccountLayout>
             <AccountCard />
-        </div>
+        </AccountLayout>
     );
 };
 

@@ -8,14 +8,26 @@ type OrderCardType = {
 
 const OrderCard: FC<OrderCardType> = ({ items, index }) => {
     const numberOfOrder = index + 1;
-
+    const total = items.reduce((acc, item) => {
+        return acc + item.quantity! * item.price;
+    }, 0);
     return (
-        <div>
-            <h2>Order {numberOfOrder}</h2>
-            <br/>
+        <div className="bg-gray-dark w-11/12 m-auto p-5 my-5 ">
+            <h2 className="pl-10 text-lg font-semibold">
+                Order {numberOfOrder}
+            </h2>
+            <br />
             {items.map((item) => (
-                <div key={item.id}>{item.title}</div>
+                <div key={item.id} className="flex">
+                    <p className="w-2/4">{item.title} :</p>
+                    <p className="w-1/4">x{item.quantity}</p>
+                    <p>${item.price}.00 </p>
+                </div>
             ))}
+            <div className="flex pt-3 text-lg font-semibold">
+                <p className="w-3/4">Total :</p>
+                <p>${total}</p>
+            </div>
         </div>
     );
 };

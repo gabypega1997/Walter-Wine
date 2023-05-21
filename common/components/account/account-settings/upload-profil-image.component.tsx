@@ -16,7 +16,6 @@ type UploadProfilImage = {
 };
 
 export const UploadProfilImage: FC<UploadProfilImage> = ({ user }) => {
-
     const dispatch = useDispatch();
 
     async function handleFileUpload(event: ChangeEvent<HTMLInputElement>) {
@@ -25,7 +24,10 @@ export const UploadProfilImage: FC<UploadProfilImage> = ({ user }) => {
             await uploadProfilImage(file, user);
             const uploadProfilImageRef = doc(db, "users", user.uid);
 
-            const uploadedProfilImageURL = await downloadUrlProfilImage(user, file);
+            const uploadedProfilImageURL = await downloadUrlProfilImage(
+                user,
+                file
+            );
 
             await updateDoc(uploadProfilImageRef, {
                 photoURL: uploadedProfilImageURL,
@@ -37,8 +39,18 @@ export const UploadProfilImage: FC<UploadProfilImage> = ({ user }) => {
     }
 
     return (
-        <>
-            <input type="file" onChange={handleFileUpload} />
-        </>
+        <div className="h-40 w-24 rounded-full -mt-[170px]">
+            <label htmlFor="file-input">
+                <div className="h-24 w-24 bg-white/30 rounded-full flex justify-center items-center  text-4xl">
+                    <span>+</span>
+                </div>
+            </label>
+            <input
+                type="file"
+                onChange={handleFileUpload}
+                className="hidden"
+                id="file-input"
+            />
+        </div>
     );
 };
