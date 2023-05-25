@@ -1,15 +1,24 @@
-const ConfirmationCircle = ({ ...otherProps }) => {
+import { FC, HTMLAttributes } from "react";
+
+interface ConfirmationCircleProps extends HTMLAttributes<HTMLDivElement> {
+    color?: string;
+}
+
+const ConfirmationCircle: FC<ConfirmationCircleProps> = ({
+    color = "white",
+    ...otherProps
+}) => {
     return (
         <div {...otherProps}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="green"
+                stroke={color}
                 stroke-width="3"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                className="rounded-full w-80 h-80"
+                className="rounded-full"
             >
                 <path d="M20 6L9 17l-5-5"></path>
             </svg>
