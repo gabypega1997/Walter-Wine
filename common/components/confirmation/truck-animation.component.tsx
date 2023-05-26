@@ -3,24 +3,25 @@ import ConfirmationCircle from "../confirmation-circle/confirmation-circle.compo
 
 const TruckAnimation = () => {
     return (
-        <div className="h-72 bg-red-50">
-            Truck Animation
-            <Image
-                src="/images/confirmation/truck.png"
-                width={100}
-                height={50}
-                alt=" truck"
-                className=" animate-truck -ml-28"
-            />
-            <Image
-                src="/images/confirmation/arrow.png"
-                width={100}
-                height={50}
-                alt=" truck"
-                className=" animate-arrow -ml-28"
-            />
+        <div className="h-[30vh]">
+            <div className="w-fit -translate-x-full pt-10">
+                <Image
+                    src="/images/confirmation/truck.png"
+                    width={140}
+                    height={80}
+                    alt=" truck"
+                    className=" animate-truck"
+                />
+                <Image
+                    src="/images/confirmation/arrow.png"
+                    width={140}
+                    height={30}
+                    alt=" truck"
+                    className=" animate-arrow"
+                />
+            </div>
             <ConfirmationCircle
-                className="flex items-center justify-center w-20 h-20 border-8 border-green-700 rounded-full -ml-32 animate-confirmation"
+                className="flex items-center justify-center w-20 h-20 border-8 border-green-700 rounded-full  animate-confirmation -translate-x-full"
                 color="green"
             />
         </div>

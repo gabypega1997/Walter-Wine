@@ -21,36 +21,43 @@ module.exports = {
                 truck: {
                     "0%": { transform: "translateX(0)" },
 
-                    "40%": { transform: "translateX(calc(60vw))" },
-
-                    "50%": { transform: " translateX(calc(60vw))" },
+                    "50%": { transform: " translateX(calc(50vw + 50%))" },
 
                     "60%": {
-                        transform: "translateX(calc(58vw)) rotate(-6deg)",
+                        transform: "translateX(calc(49vw + 50%)) rotate(-6deg)",
                     },
 
-                    "100%": { transform: "translateX(140vw) rotate(-6deg)" },
+                    "100%": {
+                        transform:
+                            "translateX(calc(100vw + 150%)) rotate(-6deg)",
+                    },
                 },
+
                 arrow: {
                     "0%": { transform: "translateX(0)" },
 
-                    "40%": { transform: "translateX(calc(60vw))" },
+                    "50%": { transform: " translateX(calc(50vw + 50%))" },
 
-                    "50%": { transform: " translateX(calc(60vw))" },
+                    "60%": {
+                        transform: "translateX(calc(49vw + 50%)) ",
+                    },
 
-                    "60%": { transform: "translateX(calc(58vw)) " },
-
-                    "100%": { transform: "translateX(140vw) " },
+                    "100%": {
+                        transform: "translateX(calc(100vw + 150%)) ",
+                    },
                 },
+
                 confirmation: {
-                    "0%": { transform: "translateX(0)" },
-                    "100%": { transform: "translateX(calc(50vw + 80px))" },
+                    "0%": { transform: "translateX(calc(-100%))" },
+                    "100%": {
+                        transform: "translate(calc(50vw - 50%),calc(-100%))",
+                    },
                 },
             },
             animation: {
                 truck: "truck 4s ease",
                 arrow: "arrow 4s ease",
-                confirmation: "confirmation 1s ease-out 4s forwards ",
+                confirmation: "confirmation 0.3s ease-out 3s forwards ",
             },
         },
     },
