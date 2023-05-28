@@ -55,9 +55,9 @@ module.exports = {
                 },
             },
             animation: {
-                truck: "truck 4s ease",
-                arrow: "arrow 4s ease",
-                confirmation: "confirmation 0.3s ease-out 3s forwards ",
+                truck: "truck 2s ease",
+                arrow: "arrow 2s ease",
+                confirmation: "confirmation 0.3s ease-out 1.5s forwards ",
             },
         },
     },
