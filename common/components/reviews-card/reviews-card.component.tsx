@@ -14,9 +14,9 @@ const ReviewsCard = () => {
                         className="h-56 -mt-24 pl-3 pb-3 drop-shadow-md shadow-black/40"
                     />
                 </div>
-                <div className="w-3/5 text-white text-lg flex flex-col justify-between items-center">
+                <div className="w-3/5 text-white text-lg flex flex-col justify-between items-center py-2">
                     <h3 className="text-2xl">Jonathan Lynch</h3>
-                    <p className="text-start"> Greate</p>
+                    <p className="mr-auto ml-6"> Great</p>
                     <div className="flex gap-3">
                         <StarsRating rating={5} />
                         <span className="font-sans font-semibold -mt-1">
