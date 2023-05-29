@@ -9,7 +9,7 @@ const ReviewAndButtons = () => {
     };
     return (
         <div className="py-20 bg-[url('/images/home/Polygon3.png')] bg-no-repeat bg-right  ">
-            <div className="flex justify-between items-center text-lg gap-2">
+            <div className="flex justify-between items-center text-lg gap-2 sm:justify-start">
                 <div className=" py-3  rounded-2xl px-8 leading-5 backdrop-blur-lg bg-white/30">
                     <p className="">
                         &quot;Wines vary in taste, aroma, origin,
