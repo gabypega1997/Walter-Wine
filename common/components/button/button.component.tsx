@@ -2,7 +2,14 @@ import { FC, ReactNode, ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
-    shape: "buy" | "read" | "purchase" | "sign-in" | "google" | "continue";
+    shape:
+        | "buy"
+        | "read"
+        | "purchase"
+        | "sign-in"
+        | "google"
+        | "continue"
+        | "join";
     isPoligon?: boolean;
     otherClasses?: string;
 }
@@ -42,6 +49,8 @@ const Button: FC<ButtonProps> = ({
                 return ` ${smallButton}" bg-brown "`;
             case "continue":
                 return ` ${largeButton}" bg-green-200 "`;
+            case "join":
+                return ` ${mediumButton} bg-brown text-white `;
             default:
                 return " ";
         }
