@@ -48,7 +48,7 @@ const Button: FC<ButtonProps> = ({
             case "sign-in":
                 return ` ${smallButton}" bg-brown "`;
             case "continue":
-                return ` ${largeButton}" bg-green-200 "`;
+                return ` ${mediumButton}" bg-green-700 text-white "`;
             case "join":
                 return ` ${mediumButton} bg-brown text-white `;
             default:
