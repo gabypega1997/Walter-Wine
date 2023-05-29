@@ -1,5 +1,6 @@
 import useGetWine from "@/common/hooks/api/get-wine.hooks";
 import ProductCart from "./product-card.component";
+import SpecialOffer from "../offers/special-offer/special-offer.component";
 
 const ProductsList = () => {
     const [{ isLoading, fetchedWines, error }] = useGetWine();
@@ -14,6 +15,8 @@ const ProductsList = () => {
                     <ProductCart key={wine.id!} index={index} item={wine} />
                 ))
             )}
+
+            {!isLoading && <SpecialOffer/>}
         </div>
     );
 };
