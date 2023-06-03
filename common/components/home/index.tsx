@@ -4,8 +4,8 @@ import ReviewAndButtons from "./review-and-buttons.component";
 
 const Home = () => {
     return (
-        <div className=" bg-gray-dark sm:hidden">
-            <div className="">
+        <div className=" bg-gray-dark">
+            <div className="sm:hidden">
                 <Jumbotron />
 
                 <ReviewAndButtons />
