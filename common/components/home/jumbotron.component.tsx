@@ -1,8 +1,18 @@
 import Image from "next/image";
+import { FC } from "react";
 
-const Jumbotron = () => {
+type JumbotronProps = {
+    forDesktop?: boolean;
+};
+
+const Jumbotron: FC<JumbotronProps> = ({ forDesktop = false }) => {
+    const mobileClasses =
+        "bg-[url('/images/home/Polygon1.png')]  bg-[left_bottom_5rem] bg-no-repeat pt-10";
+
+    const desktopClasses = "bg-[url('/images/home/Polygon2.png')]  bg-no-repeat flex flex-col-reverse gap-10 pt-20";
+
     return (
-        <div className="bg-[url('/images/home/Polygon1.png')]  bg-[left_bottom_5rem] bg-no-repeat pt-10">
+        <div className={forDesktop ? desktopClasses : mobileClasses}>
             <Image
                 src="/images/home/bottleWine.png"
                 width={300}
