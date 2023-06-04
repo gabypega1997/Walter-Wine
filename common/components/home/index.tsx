@@ -4,7 +4,7 @@ import ReviewAndButtons from "./review-and-buttons.component";
 
 const Home = () => {
     return (
-        <div className=" bg-gray-dark h-92">
+        <div className="h-full  bg-gray-dark">
             <div className="sm:hidden">
                 <Jumbotron />
 
