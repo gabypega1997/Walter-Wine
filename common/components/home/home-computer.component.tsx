@@ -4,7 +4,7 @@ import ReviewAndButtons from "./review-and-buttons.component";
 
 const HomeComputer = () => {
     return (
-        <div className="flex w-5/6 h-screen mx-auto">
+        <div className="flex w-5/6 mx-auto">
             <div className="w-2/3 lg:w-1/3 ">
                 <Jumbotron forDesktop />
             </div>
