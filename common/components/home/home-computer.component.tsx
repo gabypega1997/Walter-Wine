@@ -11,10 +11,10 @@ const HomeComputer = () => {
             <div className="hidden w-1/2 lg:block pt-[100px]">
                 <Image
                     src="/images/home/bigRedWine.png"
-                    width={400}
-                    height={400}
+                    width={500}
+                    height={500}
                     alt="Red Wine"
-                    className="m-auto"
+                    className="m-auto px-10"
                 />
             </div>
             <div className="w-2/3 lg:w-1/3 ">
