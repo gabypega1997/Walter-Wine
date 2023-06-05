@@ -6,7 +6,7 @@ const SpecialOffer = () => {
 
     return (
         <div
-            className={`h-[120px] bg-yellow w-11/12 mx-auto -mt-[100px] z-50 flex shadow-md shadow-black/20 relative ${
+            className={`h-[120px] bg-yellow w-11/12 mx-auto -mt-[100px] z-50 flex shadow-md shadow-black/20 relative md:w-7/12 ${
                 closeOffert && " hidden "
             } `}
         >
