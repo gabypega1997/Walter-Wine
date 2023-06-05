@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const Index: FC = () => {
     return (
-        <div className="min-h-screen bg-gray-dark">
+        <div className="min-h-screen bg-gray-dark relative">
             <ProductsList />
         </div>
     );
