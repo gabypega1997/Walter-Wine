@@ -27,15 +27,13 @@ const CartCard: FC<CartCardProps> = ({ cartItem }) => {
     };
     return (
         <div className="w-32  h-72 mx-8 rounded-2xl">
-            <div className="bg-yellow h-52 w-32 m-auto rounded-2xl">
+            <div className="bg-[url('/images/shop/WineBrown.png')] h-[241px] w-[127px] m-auto rounded-2xl">
                 <button
                     className="absolute ml-[100px] p-1 font-bold"
                     onClick={handleEraseProduct}
                 >
                     X
                 </button>
-
-                <span className="">Image</span>
             </div>
             <div className="font-semibold text-white py-1 text-center">
                 <h3 className="text-lg py-1">{cartItem.title}</h3>

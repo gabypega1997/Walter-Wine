@@ -58,7 +58,7 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            className={`${buttonStyle()} font-semibold drop-shadow-lg ${otherClasses} `}
+            className={`${buttonStyle()} font-semibold drop-shadow-lg ${otherClasses} hover:opacity-90 hover:shadow-lg `}
             style={isPoligon ? polygonShapeStyle : {}}
             {...otherProps}
         >
