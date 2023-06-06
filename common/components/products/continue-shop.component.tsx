@@ -17,7 +17,7 @@ const ContinueShoping: FC<ContinueShopingProps> = ({
     };
 
     return (
-        <div className="bg-white/20 absolute z-50 top-0 left-0 h-full w-screen flex justify-center items-center">
+        <div className="fixed bg-white/20  z-50 top-0 left-0 h-full w-screen flex justify-center items-center">
             <div className="h-[230px] w-[300px] bg-white rounded-2xl shadow-md">
                 <div className="flex flex-col justify-center items-center">
                     <p className="font-semibold px-12 py-4 text-lg">
