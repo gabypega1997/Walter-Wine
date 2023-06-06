@@ -1,15 +1,19 @@
-import { useState } from "react";
-import SignUpForm from "../sign-up-form";
+import Image from "next/image";
 import SignInForm from "../sign-in-form";
+import SignUpForm from "../sign-up-form";
 
-const AuthTemplate = () => {
-    const [signUpOrSignIn, setSignUpOrSignIn] = useState<"signIn" | "signUp">(
-        "signIn"
-    );
-
+const AuthTemplateDesktop = () => {
     return (
-        <div className="transition ">
-            {signUpOrSignIn === "signIn" ? (
+        <div className="hidden md:flex bg-gray-light shadow-2xl w-5/6 mx-auto justify-evenly">
+            {/* sign In */}
+            <div className="border-r-2 w-1/2 border-zinc-400 lg:px-12 xl:px-32 2xl:px-40">
+                <Image
+                    src="/images/auth/profil.png"
+                    width={80}
+                    height={80}
+                    alt="default profil"
+                    className="m-auto pt-16"
+                />
                 <div className="text-center my-10 text-white">
                     <h2 className="text-xl font-semibold">
                         I alredy have an account{" "}
@@ -19,14 +23,17 @@ const AuthTemplate = () => {
                         email and<br></br> password
                     </p>
                     <SignInForm />
-                    <div
-                        className="text-xl font-semibold text-yellow"
-                        onClick={() => setSignUpOrSignIn("signUp")}
-                    >
-                        Don&apos;t have an acoount ?
-                    </div>
                 </div>
-            ) : (
+            </div>
+            {/* sign up */}
+            <div className="w-1/2 lg:px-12 xl:px-32 2xl:px-40">
+                <Image
+                    src="/images/auth/profil.png"
+                    width={80}
+                    height={80}
+                    alt="default profil"
+                    className="m-auto pt-16"
+                />
                 <div className="text-center my-10 text-white">
                     <h2 className="text-xl font-semibold">
                         Don&apos;t have an acoount ?{" "}
@@ -37,16 +44,10 @@ const AuthTemplate = () => {
                         and password
                     </p>
                     <SignUpForm />
-                    <div
-                        className="text-xl font-semibold text-yellow"
-                        onClick={() => setSignUpOrSignIn("signIn")}
-                    >
-                        You alredy have an account ?
-                    </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 };
 
-export default AuthTemplate;
+export default AuthTemplateDesktop;
