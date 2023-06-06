@@ -39,9 +39,9 @@ export const UploadProfilImage: FC<UploadProfilImage> = ({ user }) => {
     }
 
     return (
-        <div className="h-40 w-24 rounded-full -mt-[170px]">
+        <div className="h-40 w-24 rounded-full -mt-[170px] ">
             <label htmlFor="file-input">
-                <div className="h-24 w-24 bg-white/30 rounded-full flex justify-center items-center  text-4xl">
+                <div className="h-24 w-24 bg-white/30 rounded-full flex justify-center items-center  text-4xl hover:bg-white/20 hover:text-5xl">
                     <span>+</span>
                 </div>
             </label>
