@@ -91,7 +91,7 @@ const PaymentForm = () => {
                         alt="visa"
                     />
                 </div>
-                <CardElement className="p-5 text-2xl w-full" />
+                <CardElement className="p-5 text-2xl w-full md:w-3/6 lg:w-2/6" />
                 <div className="flex flex-col pt-5 pb-8">
                     <Checkbox checkboxFor="conditions">
                         I agree to terms & conditions

@@ -7,7 +7,7 @@ type CheckboxProps = {
 
 const Checkbox: FC<CheckboxProps> = ({ children, checkboxFor }) => {
     return (
-        <div className="flex gap-3 py-2 text-lg text-brown font-semibold items-center relative">
+        <div className="flex gap-3 py-2 text-lg text-brown font-semibold items-center relative hover:text-brown/80 ">
             <div className="ring-4 ring-brown w-5 h-5">
                 <input
                     type="checkbox"

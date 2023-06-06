@@ -33,7 +33,7 @@ const CartCheckout = () => {
             </div>
 
             {/*   Price compoentn   */}
-            <div className="p-6  font-semibold">
+            <div className="p-6  font-semibold mx-auto md:w-3/6 md:py-12 lg:w-2/6 lg:py-20">
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
                         <PriceTabel key={item.id} cartItem={item} />
