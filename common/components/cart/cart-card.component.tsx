@@ -29,10 +29,10 @@ const CartCard: FC<CartCardProps> = ({ cartItem }) => {
         <div className="w-32  h-72 mx-8 rounded-2xl">
             <div className="bg-[url('/images/shop/WineBrown.png')] h-[241px] w-[127px] m-auto rounded-2xl">
                 <button
-                    className="absolute ml-[100px] p-1 font-bold"
+                    className="absolute ml-[100px] p-1 font-bold text-gray-900 "
                     onClick={handleEraseProduct}
                 >
-                    X
+                    &#10006;
                 </button>
             </div>
             <div className="font-semibold text-white py-1 text-center">
