@@ -16,8 +16,8 @@ const Span: FC<SpanProps> = ({ children, color }) => {
 };
 const Content = () => {
     return (
-        <div className="w-5/6 mx-auto text-white py-6 text-[17px] font-semibold">
-            <h1 className="text-yellow text-center font-bold text-xl">
+        <div className="w-5/6 mx-auto text-white py-6 text-[17px] md:text-xl font-semibold">
+            <h1 className="text-yellow text-center font-bold text-xl md:text-2xl xl:text-3xl">
                 Who are we?
             </h1>
             <Image
@@ -25,7 +25,7 @@ const Content = () => {
                 width={100}
                 height={100}
                 alt="glas and boottle"
-                className="mx-auto my-5"
+                className="mx-auto my-5 md:w-[120px] xl:w-[150px] md:my-8 xl:my-12"
             />
             <p>
                 Wine is a renowned winemaker located in
