@@ -29,7 +29,7 @@ const MyOrders = () => {
                         My Orders
                     </h1>
                 </div>
-                <PreviousPageButton className="absolute top-3 right-3" />
+                <PreviousPageButton className="absolute top-3 right-3 hover:opacity-80 cursor-pointer" />
 
                 {orders &&
                     orders.map((order, index) => (

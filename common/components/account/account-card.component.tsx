@@ -10,7 +10,7 @@ const AccountCard = () => {
 
     return (
         <div className="flex flex-col justify-center items-center gap-5 bg-gray-light w-5/6 mx-auto shadow-2xl relative">
-            <PreviousPageButton className="absolute top-3 right-3" />
+            <PreviousPageButton className="absolute top-3 right-3 hover:opacity-90 cursor-pointer" />
             <h1 className="text-xl font-semibold pt-5 text-white">
                 My Account
             </h1>
@@ -38,7 +38,7 @@ const AccountCard = () => {
             </NavigationButtonAccount>
 
             <SignOut
-                className="h-10 w-32 rounded-lg text-gray-dark bg-yellow font-semibold mt-8 mb-20"
+                className="h-10 w-32 rounded-lg text-gray-dark bg-yellow font-semibold mt-8 mb-20 hover:opacity-90 hover:shadow-lg"
                 style={{
                     clipPath:
                         "polygon(100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%,0% 0%)",

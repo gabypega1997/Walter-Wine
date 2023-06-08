@@ -11,10 +11,8 @@ const AccountSettings = () => {
     return (
         <AccountLayout>
             <div className="bg-gray-light w-5/6 m-auto shadow-2xl text-white text-center flex flex-col gap-5 items-center relative">
-                <PreviousPageButton className="absolute top-3 right-3" />
-                <h1 className="text-xl font-semibold py-5">
-                    Account Settings 
-                </h1>
+                <PreviousPageButton className="absolute top-3 right-3 hover:opacity-80 cursor-pointer" />
+                <h1 className="text-xl font-semibold py-5">Account Settings</h1>
 
                 <ProfilImage user={user} />
                 <UploadProfilImage user={user} />

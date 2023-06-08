@@ -65,6 +65,7 @@ const UpdateInput: FC<UpdateInputProps> = ({ user, type }) => {
                     height={20}
                     alt="settings"
                     className="h-10 w-10 hover:rotate-90 hover:drop-shadow-2xl mx-2"
+                    onClick={handlerUpdates}
                 />
             </div>
         </div>

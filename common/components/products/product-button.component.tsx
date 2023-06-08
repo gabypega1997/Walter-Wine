@@ -8,7 +8,7 @@ type ProductButton = {
 const ProductButton: FC<ProductButton> = ({ children, handler }) => {
     return (
         <button
-            className=" text-white  z-10 rounded-sm h-9 w-9 bg-gray-light"
+            className=" text-white  z-10 rounded-sm h-9 w-9 bg-gray-light hover:bg-gray-dark"
             onClick={handler}
         >
             {children}

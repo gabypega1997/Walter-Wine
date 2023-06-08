@@ -1,7 +1,8 @@
-import  PaymentForm  from "./payment-form.comonent";
+import PaymentForm from "./payment-form.comonent";
 
 const Payment = () => {
-    return (<PaymentForm></PaymentForm>);
+    return (
+            <PaymentForm></PaymentForm>
+    );
 };
-export default Payment
-
+export default Payment;

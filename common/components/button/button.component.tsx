@@ -48,7 +48,7 @@ const Button: FC<ButtonProps> = ({
             case "sign-in":
                 return ` ${smallButton}" bg-brown "`;
             case "continue":
-                return ` ${largeButton}" bg-green-200 "`;
+                return ` ${mediumButton}" bg-green-700 text-white "`;
             case "join":
                 return ` ${mediumButton} bg-brown text-white `;
             default:
@@ -58,7 +58,7 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            className={`${buttonStyle()} font-semibold drop-shadow-lg ${otherClasses} `}
+            className={`${buttonStyle()} font-semibold drop-shadow-lg ${otherClasses} hover:opacity-90 hover:shadow-lg `}
             style={isPoligon ? polygonShapeStyle : {}}
             {...otherProps}
         >

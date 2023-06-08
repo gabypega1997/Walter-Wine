@@ -4,7 +4,7 @@ import {
     selectCartItems,
     selectCartTotal,
 } from "@/common/store/cart/cart.selector";
-import { CartItem} from "@/common/types/wine.types";
+import { CartItem } from "@/common/types/wine.types";
 import { selectUser } from "@/common/store/user/user.selector";
 import Payment from "../payment-form";
 import Link from "next/link";
@@ -17,13 +17,10 @@ const CartCheckout = () => {
     const currentUser = useSelector(selectUser);
 
     return (
-        <div className="min-h-screen">
+        <div>
             {/* Images component */}
 
-            <h1 className="p-3 text-2xl font-bold text-center text-white bg-gray-dark">
-                Checkout
-            </h1>
-            <div className="rounded-br-[250px] h-96 bg-gray-dark flex max-w-full overflow-scroll drop-shadow-2xl">
+            <div className="rounded-br-[250px] h-96 bg-gray-dark flex max-w-full justify-center  drop-shadow-2xl pt-10 md:rounded-b-[250px] overflow-auto">
                 {!cartItems.length && (
                     <div className="text-white text-xl p-5">
                         Your cart is empty
@@ -36,7 +33,7 @@ const CartCheckout = () => {
             </div>
 
             {/*   Price compoentn   */}
-            <div className="p-6  font-semibold">
+            <div className="p-6  font-semibold mx-auto md:w-3/6 md:py-12 lg:w-2/6 lg:py-20">
                 {cartItems &&
                     cartItems.map((item: CartItem) => (
                         <PriceTabel key={item.id} cartItem={item} />

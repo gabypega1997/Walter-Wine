@@ -13,7 +13,8 @@ export const ProfilImage: FC<ProfilImage> = ({ user }) => {
                 width={200}
                 height={100}
                 alt={"Profil Image"}
-                src={user && user.photoURL}
+                // src={user && user.photoURL}
+                src="/images/defaultProfil.jpg"
             ></Image>
 
             {/* this -mt-4 is for a gap-5 from flex
