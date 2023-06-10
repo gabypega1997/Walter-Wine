@@ -4,7 +4,7 @@ import TruckAnimation from "./truck-animation.component";
 
 const ConfirmationOrder = () => {
     return (
-        <div className="min-h-screen">
+        <div className="">
             <ConfirmationMessage />
             <TruckAnimation />
             <Newsletter />

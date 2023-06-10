@@ -11,8 +11,9 @@ const searchWine = async (
     const { title } = req.query as SearchQuery;
 
     try {
-        if(title.length === 0) {
-            res.status(200).json([])
+        if (title.length === 0) {
+            res.status(200).json([]);
+            return;
         }
         const q = await query(
             collection(db, "wines"),
@@ -32,7 +33,6 @@ const searchWine = async (
             };
             results.push(result);
         });
-
         res.status(200).json(results);
     } catch (error) {
         console.error(error);
