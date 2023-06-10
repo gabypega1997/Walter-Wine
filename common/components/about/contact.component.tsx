@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Contact = () => {
     return (
-        <div className="md:py-10 md:scale-125 xl:scale-150 xl:py-20">
+        <div className="md:py-10 xl:py-20 md:text-xl xl:text-2xl">
             <h3 className="text-brown font-bold text-center">Contact us</h3>
             <div className="flex justify-center gap-12 pt-6 pb-12">
                 <Image

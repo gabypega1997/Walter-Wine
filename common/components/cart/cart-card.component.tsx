@@ -9,6 +9,7 @@ import {
     removeItemFromCart,
 } from "@/common/store/cart/cart.reducer";
 import ButtonChangeQuantity from "./buttons-change-quantity.component";
+import Image from "next/image";
 
 type CartCardProps = {
     cartItem: CartItem;
@@ -27,12 +28,19 @@ const CartCard: FC<CartCardProps> = ({ cartItem }) => {
     };
     return (
         <div className="w-32  h-72 mx-8 rounded-2xl">
-            <div className="bg-[url('/images/shop/WineBrown.png')] h-[241px] w-[127px] m-auto rounded-2xl">
+            <div className={` h-[241px] w-[127px] m-auto rounded-2xl relative`}>
+                <Image
+                    src={cartItem.imageUrl}
+                    width={120}
+                    height={100}
+                    alt={cartItem.title}
+                    className="rounded-2xl "
+                />
                 <button
-                    className="absolute ml-[100px] p-1 font-bold"
+                    className="absolute top-1 right-4 p-1 font-bold text-gray-900 "
                     onClick={handleEraseProduct}
                 >
-                    X
+                    &#10006;
                 </button>
             </div>
             <div className="font-semibold text-white py-1 text-center">

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC,  useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Wine } from "@/common/types/wine.types";
@@ -6,7 +6,7 @@ import Image from "next/image";
 import { addItemToCart } from "@/common/store/cart/cart.reducer";
 
 import ProductButton from "./product-button.component";
-import { threeDiferiteElements } from "@/common/utils/functions/general.functions";
+
 import ProductAbout from "./product-about.component";
 
 import ContinueShoping from "./continue-shop.component";
@@ -60,12 +60,7 @@ const ProductCart: FC<ProductCardProps> = ({ item, index }) => {
 
                         <Image
                             className="absolute "
-                            src={`/images/shop/${threeDiferiteElements(
-                                index,
-                                "WineYellow.png",
-                                "WineRed.png",
-                                "WineBrown.png"
-                            )}`}
+                            src={item.imageUrl}
                             width={118}
                             height={200}
                             alt={item.title}

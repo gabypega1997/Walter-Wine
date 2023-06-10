@@ -44,7 +44,7 @@ const ReviewAndButtons: FC<ReviewAndButtonsProps> = ({
                 </div>
 
                 <div
-                    className="px-2 py-3 backdrop-blur-lg bg-white/30 rounded-xl min-w-fit"
+                    className="px-2 py-3 backdrop-blur-lg bg-white/30 rounded-xl min-w-fit cursor-pointer hover:opacity-80 "
                     onClick={() => redirectionHandler("/reviews")}
                 >
                     More Reviews
