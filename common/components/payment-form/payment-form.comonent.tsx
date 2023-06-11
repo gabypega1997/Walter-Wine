@@ -8,7 +8,7 @@ import {
     selectCartItems,
 } from "../../store/cart/cart.selector";
 import { selectUser } from "../../store/user/user.selector";
-import Spinner from "../spinner";
+import Spinner from "../spinner/spinner.component";
 import { updateOrderForUser } from "@/common/utils/firebase/firestore.functions";
 import { clearCart } from "@/common/store/cart/cart.reducer";
 import Button from "../button/button.component";
@@ -103,7 +103,7 @@ const PaymentForm = () => {
                 </div>
                 <div className="pb-16">
                     <Button shape="purchase">
-                        {isProcessingPayment ? <Spinner /> : "Pay now"}
+                        {isProcessingPayment ? <Spinner otherClasses="mx-auto fill-wine"/> : "Pay now"}
                     </Button>
                 </div>
             </form>
