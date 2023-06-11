@@ -14,6 +14,7 @@ import { clearCart } from "@/common/store/cart/cart.reducer";
 import Button from "../button/button.component";
 import Image from "next/image";
 import Checkbox from "./checkbox.component";
+import Modal from "../modal/modal.component";
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -28,6 +29,7 @@ const PaymentForm = () => {
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
     const [isAmountEmpty, setIsAmountEmpty] = useState(false);
     const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+    const [showTermsModal, setShowTermsModal] = useState(false);
 
     const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -35,13 +37,16 @@ const PaymentForm = () => {
         if (!stripe || !elements) {
             return;
         }
+
+        if (!isTermsAccepted) {
+            console.log("terms not accepted");
+            setShowTermsModal(true);
+            return;
+        }
+
         if (!amount) {
             setIsAmountEmpty(true);
             setIsProcessingPayment(false);
-            return;
-        }
-        if (!isTermsAccepted) {
-            console.log("terms not accepted");
             return;
         }
         setIsProcessingPayment(true);
@@ -105,7 +110,10 @@ const PaymentForm = () => {
                 </div>
                 <CardElement className="w-full p-5 text-2xl md:w-3/6 lg:w-2/6" />
                 <div className="flex flex-col pt-5 pb-8">
-                    <Checkbox checkboxFor="conditions" onChangeFc={()=>(setIsTermsAccepted((state)=>!state))}>
+                    <Checkbox
+                        checkboxFor="conditions"
+                        onChangeFc={() => setIsTermsAccepted((state) => !state)}
+                    >
                         I agree to terms & conditions
                     </Checkbox>
 
@@ -123,6 +131,21 @@ const PaymentForm = () => {
                     </Button>
                 </div>
             </form>
+            {showTermsModal && (
+                <Modal>
+                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center text-white sm:p-10 bg-gray-dark/80 rounded-2xl">
+                        <p> You don&#39;t have accept the terms & conditions</p>
+                        <Button
+                            onClick={() => {
+                                setShowTermsModal((state) => !state);
+                            }}
+                            shape="join"
+                        >
+                            OK
+                        </Button>
+                    </div>
+                </Modal>
+            )}
         </div>
     );
 };
