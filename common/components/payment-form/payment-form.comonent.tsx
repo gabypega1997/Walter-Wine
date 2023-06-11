@@ -37,18 +37,18 @@ const PaymentForm = () => {
         if (!stripe || !elements) {
             return;
         }
-
+        if (!amount) {
+            setIsAmountEmpty(true);
+            setIsProcessingPayment(false);
+            return;
+        }
+        
         if (!isTermsAccepted) {
             console.log("terms not accepted");
             setShowTermsModal(true);
             return;
         }
 
-        if (!amount) {
-            setIsAmountEmpty(true);
-            setIsProcessingPayment(false);
-            return;
-        }
         setIsProcessingPayment(true);
         const response = await fetch("/api/stripe/payment-intent", {
             method: "POST",
@@ -133,7 +133,7 @@ const PaymentForm = () => {
             </form>
             {showTermsModal && (
                 <Modal>
-                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center text-white sm:p-10 bg-gray-dark/80 rounded-2xl">
+                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center text-white sm:p-10 bg-wine rounded-2xl">
                         <p> You don&#39;t have accept the terms & conditions</p>
                         <Button
                             onClick={() => {
@@ -143,6 +143,19 @@ const PaymentForm = () => {
                         >
                             OK
                         </Button>
+                    </div>
+                </Modal>
+            )}
+            {isAmountEmpty && (
+                <Modal>
+                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center text-white sm:p-10 bg-wine rounded-2xl">
+                        <p>Your Cart Is Empty</p>
+                        <Button
+                            shape="sign-in"
+                            onClick={() => {
+                                setIsAmountEmpty((state) => !state);
+                            }}
+                        >Ok</Button>
                     </div>
                 </Modal>
             )}
