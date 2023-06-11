@@ -26,10 +26,22 @@ const PaymentForm = () => {
     const currentUser = useSelector(selectUser);
 
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+    const [isAmountEmpty, setIsAmountEmpty] = useState(false);
+    const [isTermsAccepted, setIsTermsAccepted] = useState(false);
 
     const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         if (!stripe || !elements) {
+            return;
+        }
+        if (!amount) {
+            setIsAmountEmpty(true);
+            setIsProcessingPayment(false);
+            return;
+        }
+        if (!isTermsAccepted) {
+            console.log("terms not accepted");
             return;
         }
         setIsProcessingPayment(true);
@@ -42,7 +54,6 @@ const PaymentForm = () => {
         }).then((res) => res.json());
 
         const { clientSecret } = response;
-        
 
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -54,7 +65,7 @@ const PaymentForm = () => {
         });
         setIsProcessingPayment(false);
         if (paymentResult.error) {
-            alert(paymentResult.error);
+            console.log("incorrect card");
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
                 updateOrderForUser(currentUser, cartItems);
@@ -72,7 +83,7 @@ const PaymentForm = () => {
                 className="flex flex-col items-center"
             >
                 <h2>Credit Card Payment: </h2>
-                <div className="flex gap-7 py-4">
+                <div className="flex py-4 gap-7">
                     <Image
                         src="/images/cart/visa.png"
                         width={40}
@@ -92,9 +103,9 @@ const PaymentForm = () => {
                         alt="visa"
                     />
                 </div>
-                <CardElement className="p-5 text-2xl w-full md:w-3/6 lg:w-2/6" />
+                <CardElement className="w-full p-5 text-2xl md:w-3/6 lg:w-2/6" />
                 <div className="flex flex-col pt-5 pb-8">
-                    <Checkbox checkboxFor="conditions">
+                    <Checkbox checkboxFor="conditions" onChangeFc={()=>(setIsTermsAccepted((state)=>!state))}>
                         I agree to terms & conditions
                     </Checkbox>
 
@@ -104,7 +115,11 @@ const PaymentForm = () => {
                 </div>
                 <div className="pb-16">
                     <Button shape="purchase">
-                        {isProcessingPayment ? <Spinner otherClasses="mx-auto fill-wine w-12 h-12"/> : "Pay now"}
+                        {isProcessingPayment ? (
+                            <Spinner otherClasses="mx-auto fill-wine w-12 h-12" />
+                        ) : (
+                            "Pay now"
+                        )}
                     </Button>
                 </div>
             </form>
