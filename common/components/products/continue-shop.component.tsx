@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import Button from "../button/button.component";
 import ConfirmationCircle from "../confirmation-circle/confirmation-circle.component";
 import { useRouter } from "next/router";
+import Modal from "../modal/modal.component";
 
 type ContinueShopingProps = {
     handleCloseContinueShoppingFC: () => void;
@@ -17,10 +18,10 @@ const ContinueShoping: FC<ContinueShopingProps> = ({
     };
 
     return (
-        <div className="fixed bg-white/20  z-50 top-0 left-0 h-full w-screen flex justify-center items-center">
+        <Modal>
             <div className="h-[230px] w-[300px] bg-white rounded-2xl shadow-md">
-                <div className="flex flex-col justify-center items-center">
-                    <p className="font-semibold px-12 py-4 text-lg">
+                <div className="flex flex-col items-center justify-center">
+                    <p className="px-12 py-4 text-lg font-semibold">
                         This item was added to your shopping cart
                     </p>
                     <ConfirmationCircle
@@ -28,7 +29,7 @@ const ContinueShoping: FC<ContinueShopingProps> = ({
                         color="green"
                     />
                 </div>
-                <div className="flex justify-evenly items-center">
+                <div className="flex items-center justify-evenly">
                     <Button
                         shape="continue"
                         onClick={handleCloseContinueShoppingFC}
@@ -42,7 +43,7 @@ const ContinueShoping: FC<ContinueShopingProps> = ({
                     </Button>
                 </div>
             </div>
-        </div>
+        </Modal>
     );
 };
 

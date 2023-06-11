@@ -24,8 +24,4 @@ const ConfirmationCircle: FC<ConfirmationCircleProps> = ({
         </div>
     );
 };
-// style={{
-//     clipPath:
-//     "polygon(25% 50%, 40% 65%, 75% 30%, 70% 25%, 40% 55%, 30% 45%)",
-// }}
 export default ConfirmationCircle;
