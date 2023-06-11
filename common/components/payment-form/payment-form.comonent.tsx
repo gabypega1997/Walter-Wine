@@ -42,6 +42,7 @@ const PaymentForm = () => {
         }).then((res) => res.json());
 
         const { clientSecret } = response;
+        
 
         const paymentResult = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -103,7 +104,7 @@ const PaymentForm = () => {
                 </div>
                 <div className="pb-16">
                     <Button shape="purchase">
-                        {isProcessingPayment ? <Spinner otherClasses="mx-auto fill-wine"/> : "Pay now"}
+                        {isProcessingPayment ? <Spinner otherClasses="mx-auto fill-wine w-12 h-12"/> : "Pay now"}
                     </Button>
                 </div>
             </form>
