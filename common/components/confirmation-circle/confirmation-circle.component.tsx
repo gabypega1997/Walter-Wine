@@ -15,9 +15,9 @@ const ConfirmationCircle: FC<ConfirmationCircleProps> = ({
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke={color}
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
             >
                 <path d="M20 6L9 17l-5-5"></path>
             </svg>
