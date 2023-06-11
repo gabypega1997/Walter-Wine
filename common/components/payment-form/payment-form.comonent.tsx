@@ -42,7 +42,7 @@ const PaymentForm = () => {
             setIsProcessingPayment(false);
             return;
         }
-        
+
         if (!isTermsAccepted) {
             console.log("terms not accepted");
             setShowTermsModal(true);
@@ -133,13 +133,14 @@ const PaymentForm = () => {
             </form>
             {showTermsModal && (
                 <Modal>
-                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center text-white sm:p-10 bg-wine rounded-2xl">
+                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center shadow-md text-gray-dark sm:p-10 bg-brown rounded-2xl">
                         <p> You don&#39;t have accept the terms & conditions</p>
                         <Button
                             onClick={() => {
                                 setShowTermsModal((state) => !state);
                             }}
-                            shape="join"
+                            shape="google"
+                            isPoligon
                         >
                             OK
                         </Button>
@@ -148,14 +149,17 @@ const PaymentForm = () => {
             )}
             {isAmountEmpty && (
                 <Modal>
-                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center text-white sm:p-10 bg-wine rounded-2xl">
+                    <div className="flex flex-col items-center justify-center gap-5 p-3 text-2xl text-center shadow-lg text-gray-dark sm:p-10 bg-brown rounded-2xl">
                         <p>Your Cart Is Empty</p>
                         <Button
-                            shape="sign-in"
+                            shape="google"
                             onClick={() => {
                                 setIsAmountEmpty((state) => !state);
                             }}
-                        >Ok</Button>
+                            isPoligon
+                        >
+                            Ok
+                        </Button>
                     </div>
                 </Modal>
             )}
