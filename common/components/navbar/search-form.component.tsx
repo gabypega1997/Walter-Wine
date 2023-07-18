@@ -42,18 +42,10 @@ const SearchForm = () => {
                     {results.map((result) => (
                         <li
                             key={result.id}
-                            className="flex p-2 text-xs border-b-2"
+                            className="flex p-2 text-xs border-b-2 hover:bg-slate-100"
                         >
-                            <Image
-                                src="/wine1.png"
-                                alt={result.title}
-                                width={20}
-                                height={50}
-                            />
-                            <div className="">
+                            <div className="text-lg">
                                 <span>{result.title} </span>
-                                <br />
-                                <span>${result.price}</span>
                             </div>
                         </li>
                     ))}
