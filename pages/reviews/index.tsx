@@ -36,7 +36,7 @@ const reviewsArray: reviewsArrayShape[] = [
 
 const Reviews = () => {
     return (
-        <div className=" bg-gray-dark pt-5 pb-10 flex h-full flex-wrap md:pz-[500px]">
+        <div className=" bg-gray-dark pt-5 pb-10 flex h-full flex-wrap sm:pt-20 sm:px-96 gap-10">
             {reviewsArray.map(({ name, image, message, ratting }, index) => {
                 return (
                     <ReviewsCard
