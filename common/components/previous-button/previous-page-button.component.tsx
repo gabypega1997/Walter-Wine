@@ -7,8 +7,8 @@ const PreviousPageButton = ({ ...otherProps }) => {
     return (
         <Image
             src="/images/account/backArrow.png"
-            width={35}
-            height={35}
+            width={40}
+            height={40}
             alt="back arrow"
             onClick={() => router.back()}
             {...otherProps}
