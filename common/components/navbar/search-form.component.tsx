@@ -5,7 +5,6 @@ import Image from "next/image";
 const SearchForm = () => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<SearchResult[]>([]);
-    const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
     useEffect(() => {
         const fetchSearchWine = async () => {
             const response = await fetch(`/api/wines/search?title=${query}`);
@@ -17,17 +16,13 @@ const SearchForm = () => {
 
     return (
         <div>
-            <div
-                className="  h-screen w-screen absolute top-0 left-0 z-10"
-                onClick={() => setQuery("")}
-                onTouchEnd={() => setQuery("")}
-            ></div>
             <div className="relative flex flex-wrap items-center">
                 <input
                     type="text"
                     placeholder="Search"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
+                    onBlur={() => setQuery("")}
                     className={` z-10 w-40 py-1.5 pl-3 text-sm pr-7 
                 border-2 rounded-2xl  focus:outline-none lg:w-52 xl:w-64 2xl:w-72  focus:border-gray-light focus:border-1 ${
                     results.length > 0 ? " rounded-b-none " : ""
