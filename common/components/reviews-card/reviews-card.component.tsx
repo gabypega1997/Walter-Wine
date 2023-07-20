@@ -16,7 +16,7 @@ const ReviewsCard: FC<ReviewsCardProps> = ({
     ratting,
 }) => {
     return (
-        <div className="bg-gray-dark pt-28 pb-3">
+        <div className="bg-gray-dark pt-28 pb-3 max-w-[500px]">
             <div className="bg-gray-light mx-5 flex rounded-2xl shadow-white/40 shadow-md">
                 <div className="w-2/5">
                     <Image

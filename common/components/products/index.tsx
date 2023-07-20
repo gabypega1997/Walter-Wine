@@ -1,5 +1,6 @@
 import ProductsList from "./products-list.component";
 
-const Products = () => {
+const Products = () => { 
+    
     return <ProductsList />;
 };

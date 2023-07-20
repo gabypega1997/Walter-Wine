@@ -22,7 +22,8 @@ const SearchForm = () => {
                     placeholder="Search"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
-                    className={`w-40 py-1.5 pl-3 text-sm pr-7 
+                    onBlur={() => setQuery("")}
+                    className={` z-10 w-40 py-1.5 pl-3 text-sm pr-7 
                 border-2 rounded-2xl  focus:outline-none lg:w-52 xl:w-64 2xl:w-72  focus:border-gray-light focus:border-1 ${
                     results.length > 0 ? " rounded-b-none " : ""
                 }`}
@@ -42,18 +43,10 @@ const SearchForm = () => {
                     {results.map((result) => (
                         <li
                             key={result.id}
-                            className="flex p-2 text-xs border-b-2"
+                            className="flex p-2 text-xs border-b-2 hover:bg-slate-100"
                         >
-                            <Image
-                                src="/wine1.png"
-                                alt={result.title}
-                                width={20}
-                                height={50}
-                            />
-                            <div className="">
+                            <div className="text-lg">
                                 <span>{result.title} </span>
-                                <br />
-                                <span>${result.price}</span>
                             </div>
                         </li>
                     ))}

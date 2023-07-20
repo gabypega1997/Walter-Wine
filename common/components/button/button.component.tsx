@@ -30,7 +30,7 @@ const Button: FC<ButtonProps> = ({
     const smallButton = " h-10 w-32 rounded-lg text-gray-dark ";
 
     // buy read continue
-    const mediumButton = " h-14 w-32 rounded-lg ";
+    const mediumButton = " h-14 w-32 rounded-lg text-gray-dark ";
 
     // purchase
     const largeButton = "  h-20 w-44 rounded-lg text-2xl ";

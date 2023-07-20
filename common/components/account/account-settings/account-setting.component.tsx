@@ -10,7 +10,7 @@ const AccountSettings = () => {
     const user = useSelector(selectUser);
     return (
         <AccountLayout>
-            <div className="bg-gray-light w-5/6 m-auto shadow-2xl text-white text-center flex flex-col gap-5 items-center relative">
+            <div className="bg-gray-light w-5/6 m-auto shadow-2xl text-white text-center flex flex-col gap-5 items-center relative pb-40">
                 <PreviousPageButton className="absolute top-3 right-3 hover:opacity-80 cursor-pointer" />
                 <h1 className="text-xl font-semibold py-5">Account Settings</h1>
 
@@ -19,13 +19,17 @@ const AccountSettings = () => {
                 <UpdateInput user={user} type={"name"} />
                 <UpdateInput user={user} type={"email"} />
 
+                {/*
+                
+                --- I don't need sign out for settings menu
+
                 <SignOut
                     className="h-10 w-32 rounded-lg text-gray-dark bg-yellow font-semibold mt-8 mb-20"
                     style={{
                         clipPath:
                             "polygon(100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%,0% 0%)",
                     }}
-                />
+                /> */}
             </div>
         </AccountLayout>
     );
