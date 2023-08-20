@@ -4,14 +4,14 @@ import BurgerMenu from "./burger-menu.component";
 const BurgerButton = () => {
     const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
 
-    const handleBurgerMenuIsOpen = () => {
+    const handlerBurgerMenuIsOpen = () => {
         setBurgerMenuIsOpen((state) => !state);
     };
     return (
         <>
             <button
                 className={`flex flex-col gap-1 sm:hidden relative z-50 `}
-                onClick={handleBurgerMenuIsOpen}
+                onClick={handlerBurgerMenuIsOpen}
             >
                 <div
                     className={`w-10 h-1 transform rounded-md duration-500    ${
@@ -37,7 +37,7 @@ const BurgerButton = () => {
             </button>
 
             {burgerMenuIsOpen && (
-                <BurgerMenu handlerBurgerMenuIsOpen={handleBurgerMenuIsOpen} />
+                <BurgerMenu handlerBurgerMenuIsOpen={handlerBurgerMenuIsOpen} />
             )}
         </>
     );

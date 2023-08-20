@@ -14,20 +14,27 @@ const useGetWine = () => {
         setResult((state) => ({ ...state, isLoading: true }));
         const fetchWines = async () => {
             const res = await fetch("/api/wines");
-            const winesRef = await res.json();
-            if (winesRef) {
-                setResult((state) => ({
-                    ...state,
-                    fetchedWines: winesRef,
-                    isLoading: false,
-                }));
+            if (res.ok) {
+                const winesRef = await res.json();
+                if (winesRef.length) {
+                    setResult((state) => ({
+                        ...state,
+                        fetchedWines: winesRef,
+                        isLoading: false,
+                    }));
+                } else {
+                    setResult((state) => ({
+                        ...state,
+                        isLoading: false,
+                        error: "Database is Empty",
+                    }));
+                }
             } else {
                 setResult((state) => ({
                     ...state,
                     isLoading: false,
                     error: "Fetching wines data don't work",
                 }));
-                console.log("Fetching wines data don't work");
             }
         };
         fetchWines();
