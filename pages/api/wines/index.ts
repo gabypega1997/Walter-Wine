@@ -14,6 +14,9 @@ export default async function winesHandler(
             const winesSnap = await getDocs(winesRef);
             const wines: Wine[] = [];
 
+            if (winesSnap.empty) {
+                res.status(204).json({ message: "Database is Empty" });
+            }
             winesSnap.forEach((wine) => {
                 wines.push({
                     id: wine.id,
