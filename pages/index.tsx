@@ -15,7 +15,7 @@ const Index = () => {
                     content="width=device-width, initial-scale=1"
                 />
                 {/* logo png don't work */}
-                <link rel="icon" href="/LogoWeb.png" />
+                <link rel="png" href="/LogoWeb.png" />
             </Head>
             <Home />
         </>
