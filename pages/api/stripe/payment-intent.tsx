@@ -18,8 +18,6 @@ export default async function handler(
 
             res.status(200).json({ clientSecret: paymentIntent.client_secret });
         } catch (error) {
-            console.log({ error });
-
             res.status(400).json(error);
         }
     } else {
