@@ -1,6 +1,7 @@
+// This hook is to populate the Db with wines
+
 import { Wine } from "@/common/types/wine.types";
 import { useState } from "react";
-
 
 type AddWineResult = {
     newWine?: Wine;
